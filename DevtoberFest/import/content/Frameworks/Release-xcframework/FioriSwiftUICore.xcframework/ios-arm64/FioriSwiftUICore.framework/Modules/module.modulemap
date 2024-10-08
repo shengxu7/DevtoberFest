@@ -1,0 +1,4 @@
+framework module FioriSwiftUICore {
+  header "FioriSwiftUICore-Swift.h"
+  requires objc
+}

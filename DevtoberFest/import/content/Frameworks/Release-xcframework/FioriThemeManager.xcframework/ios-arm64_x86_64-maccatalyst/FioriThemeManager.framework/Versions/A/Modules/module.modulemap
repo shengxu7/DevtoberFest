@@ -1,0 +1,4 @@
+framework module FioriThemeManager {
+  header "FioriThemeManager-Swift.h"
+  requires objc
+}

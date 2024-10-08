@@ -1,0 +1,4 @@
+framework module FioriCharts {
+  header "FioriCharts-Swift.h"
+  requires objc
+}

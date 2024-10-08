@@ -1,0 +1,2487 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-xros1.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FioriThemeManager
+import DeveloperToolsSupport
+import Foundation
+import OSLog
+import Swift
+import SwiftUI
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os.log
+import os
+public enum BackgroundColorScheme : Swift.String, Swift.CaseIterable {
+  case device
+  case deviceInverse
+  case lightConstant
+  case darkConstant
+  @available(*, deprecated, renamed: "lightConstant")
+  public static let light: FioriThemeManager.BackgroundColorScheme
+  @available(*, deprecated, renamed: "darkConstant")
+  public static let dark: FioriThemeManager.BackgroundColorScheme
+  @available(*, unavailable, renamed: "dark")
+  public static let darkBackground: FioriThemeManager.BackgroundColorScheme?
+  @available(*, unavailable, renamed: "light")
+  public static let lightBackground: FioriThemeManager.BackgroundColorScheme?
+  public func inverse() -> FioriThemeManager.BackgroundColorScheme
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [FioriThemeManager.BackgroundColorScheme]
+  public typealias RawValue = Swift.String
+  public static var allCases: [FioriThemeManager.BackgroundColorScheme] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension FioriThemeManager.BackgroundColorScheme : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension SwiftUI.Color {
+  public static func preferredColor(_ style: FioriThemeManager.ColorStyle, background scheme: FioriThemeManager.BackgroundColorScheme? = .device, interface level: FioriThemeManager.InterfaceLevel? = .device, display mode: FioriThemeManager.ColorDisplayMode? = .device) -> SwiftUI.Color
+  public func resolvedColor(with scheme: SwiftUI.ColorScheme? = .light, in level: UIKit.UIUserInterfaceLevel? = .base) -> SwiftUI.Color
+}
+extension SwiftUI.Color {
+  public func uiColor() -> UIKit.UIColor
+}
+public enum ColorDisplayMode : Swift.String, Swift.CaseIterable {
+  case device
+  case deviceInverse
+  case normalConstant
+  case highConstant
+  public func inverse() -> FioriThemeManager.ColorDisplayMode
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [FioriThemeManager.ColorDisplayMode]
+  public typealias RawValue = Swift.String
+  public static var allCases: [FioriThemeManager.ColorDisplayMode] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension FioriThemeManager.ColorDisplayMode : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+public enum ColorStyle : Swift.String, Swift.CaseIterable {
+  @available(watchOS, unavailable)
+  case grey1
+  @available(watchOS, unavailable)
+  case grey2
+  @available(watchOS, unavailable)
+  case grey3
+  @available(watchOS, unavailable)
+  case grey4
+  @available(watchOS, unavailable)
+  case grey5
+  @available(watchOS, unavailable)
+  case grey6
+  @available(watchOS, unavailable)
+  case grey7
+  @available(watchOS, unavailable)
+  case grey8
+  @available(watchOS, unavailable)
+  case grey9
+  @available(watchOS, unavailable)
+  case grey10
+  @available(watchOS, unavailable)
+  case grey11
+  @available(watchOS, unavailable)
+  case blue1
+  @available(watchOS, unavailable)
+  case blue2
+  @available(watchOS, unavailable)
+  case blue3
+  @available(watchOS, unavailable)
+  case blue4
+  @available(watchOS, unavailable)
+  case blue5
+  @available(watchOS, unavailable)
+  case blue6
+  @available(watchOS, unavailable)
+  case blue7
+  @available(watchOS, unavailable)
+  case blue8
+  @available(watchOS, unavailable)
+  case blue9
+  @available(watchOS, unavailable)
+  case blue10
+  @available(watchOS, unavailable)
+  case blue11
+  @available(watchOS, unavailable)
+  case teal1
+  @available(watchOS, unavailable)
+  case teal2
+  @available(watchOS, unavailable)
+  case teal3
+  @available(watchOS, unavailable)
+  case teal4
+  @available(watchOS, unavailable)
+  case teal5
+  @available(watchOS, unavailable)
+  case teal6
+  @available(watchOS, unavailable)
+  case teal7
+  @available(watchOS, unavailable)
+  case teal8
+  @available(watchOS, unavailable)
+  case teal9
+  @available(watchOS, unavailable)
+  case teal10
+  @available(watchOS, unavailable)
+  case teal11
+  @available(watchOS, unavailable)
+  case green1
+  @available(watchOS, unavailable)
+  case green2
+  @available(watchOS, unavailable)
+  case green3
+  @available(watchOS, unavailable)
+  case green4
+  @available(watchOS, unavailable)
+  case green5
+  @available(watchOS, unavailable)
+  case green6
+  @available(watchOS, unavailable)
+  case green7
+  @available(watchOS, unavailable)
+  case green8
+  @available(watchOS, unavailable)
+  case green9
+  @available(watchOS, unavailable)
+  case green10
+  @available(watchOS, unavailable)
+  case green11
+  @available(watchOS, unavailable)
+  case mango1
+  @available(watchOS, unavailable)
+  case mango2
+  @available(watchOS, unavailable)
+  case mango3
+  @available(watchOS, unavailable)
+  case mango4
+  @available(watchOS, unavailable)
+  case mango5
+  @available(watchOS, unavailable)
+  case mango6
+  @available(watchOS, unavailable)
+  case mango7
+  @available(watchOS, unavailable)
+  case mango8
+  @available(watchOS, unavailable)
+  case mango9
+  @available(watchOS, unavailable)
+  case mango10
+  @available(watchOS, unavailable)
+  case mango11
+  @available(watchOS, unavailable)
+  case red1
+  @available(watchOS, unavailable)
+  case red2
+  @available(watchOS, unavailable)
+  case red3
+  @available(watchOS, unavailable)
+  case red4
+  @available(watchOS, unavailable)
+  @available(watchOS, unavailable)
+  case red5
+  @available(watchOS, unavailable)
+  case red6
+  @available(watchOS, unavailable)
+  case red7
+  @available(watchOS, unavailable)
+  case red8
+  @available(watchOS, unavailable)
+  case red9
+  @available(watchOS, unavailable)
+  case red10
+  @available(watchOS, unavailable)
+  case red11
+  @available(watchOS, unavailable)
+  case pink1
+  @available(watchOS, unavailable)
+  case pink2
+  @available(watchOS, unavailable)
+  case pink3
+  @available(watchOS, unavailable)
+  case pink4
+  @available(watchOS, unavailable)
+  case pink5
+  @available(watchOS, unavailable)
+  case pink6
+  @available(watchOS, unavailable)
+  case pink7
+  @available(watchOS, unavailable)
+  case pink8
+  @available(watchOS, unavailable)
+  case pink9
+  @available(watchOS, unavailable)
+  case pink10
+  @available(watchOS, unavailable)
+  case pink11
+  @available(watchOS, unavailable)
+  case raspberry1
+  @available(watchOS, unavailable)
+  case raspberry2
+  @available(watchOS, unavailable)
+  case raspberry3
+  @available(watchOS, unavailable)
+  case raspberry4
+  @available(watchOS, unavailable)
+  case raspberry5
+  @available(watchOS, unavailable)
+  case raspberry6
+  @available(watchOS, unavailable)
+  case raspberry7
+  @available(watchOS, unavailable)
+  case raspberry8
+  @available(watchOS, unavailable)
+  case raspberry9
+  @available(watchOS, unavailable)
+  case raspberry10
+  @available(watchOS, unavailable)
+  case raspberry11
+  @available(watchOS, unavailable)
+  case indigo1
+  @available(watchOS, unavailable)
+  case indigo2
+  @available(watchOS, unavailable)
+  case indigo3
+  @available(watchOS, unavailable)
+  case indigo4
+  @available(watchOS, unavailable)
+  case indigo5
+  @available(watchOS, unavailable)
+  case indigo6
+  @available(watchOS, unavailable)
+  case indigo7
+  @available(watchOS, unavailable)
+  case indigo8
+  @available(watchOS, unavailable)
+  case indigo9
+  @available(watchOS, unavailable)
+  case indigo10
+  @available(watchOS, unavailable)
+  case indigo11
+  @available(watchOS, unavailable)
+  case baseWhite
+  @available(watchOS, unavailable)
+  case baseBlack
+  @available(watchOS, unavailable)
+  case base1
+  @available(watchOS, unavailable)
+  case base2
+  @available(watchOS, unavailable)
+  case accentLabel1
+  @available(watchOS, unavailable)
+  case accentLabel2
+  @available(watchOS, unavailable)
+  case accentLabel3
+  @available(watchOS, unavailable)
+  case accentLabel4
+  @available(watchOS, unavailable)
+  case accentLabel5
+  @available(watchOS, unavailable)
+  case accentLabel6
+  @available(watchOS, unavailable)
+  case accentLabel7
+  @available(watchOS, unavailable)
+  case accentLabel8
+  @available(watchOS, unavailable)
+  case accentLabel9
+  @available(watchOS, unavailable)
+  case accentLabel10
+  @available(watchOS, unavailable)
+  case accentBackground1
+  @available(watchOS, unavailable)
+  case accentBackground2
+  @available(watchOS, unavailable)
+  case accentBackground3
+  @available(watchOS, unavailable)
+  case accentBackground4
+  @available(watchOS, unavailable)
+  case accentBackground5
+  @available(watchOS, unavailable)
+  case accentBackground6
+  @available(watchOS, unavailable)
+  case accentBackground7
+  @available(watchOS, unavailable)
+  case accentBackground8
+  @available(watchOS, unavailable)
+  case accentBackground9
+  @available(watchOS, unavailable)
+  case accentBackground10
+  @available(watchOS, unavailable)
+  case cardShadow
+  @available(watchOS, unavailable)
+  case sectionShadow
+  @available(watchOS, unavailable)
+  case primaryGroupedBackground
+  @available(watchOS, unavailable)
+  case secondaryGroupedBackground
+  @available(watchOS, unavailable)
+  case tertiaryGroupedBackground
+  case primaryBackground
+  case secondaryBackground
+  case tertiaryBackground
+  @available(watchOS, unavailable)
+  case navBarTitleLabel
+  case primaryLabel
+  case secondaryLabel
+  case tertiaryLabel
+  case quaternaryLabel
+  @available(watchOS, unavailable)
+  case quinaryLabel
+  @available(watchOS, unavailable)
+  case neutralLabel
+  @available(watchOS, unavailable)
+  case primaryFill
+  @available(watchOS, unavailable)
+  case secondaryFill
+  @available(watchOS, unavailable)
+  case tertiaryFill
+  @available(watchOS, unavailable)
+  case quaternaryFill
+  case tintColor
+  @available(watchOS, unavailable)
+  case tintColor2
+  @available(watchOS, unavailable)
+  case tintColor3
+  case tintColorTapState
+  case negativeLabel
+  case positiveLabel
+  case criticalLabel
+  @available(watchOS, unavailable)
+  case informativeLabel
+  case negativeLabelTapState
+  case positiveLabelTapState
+  case criticalLabelTapState
+  @available(watchOS, unavailable)
+  case informativeLabelTapState
+  @available(watchOS, unavailable)
+  case neutralLabelTapState
+  @available(watchOS, unavailable)
+  case negativeBackground
+  @available(watchOS, unavailable)
+  case positiveBackground
+  @available(watchOS, unavailable)
+  case criticalBackground
+  @available(watchOS, unavailable)
+  case informationBackground
+  @available(watchOS, unavailable)
+  case neutralBackground
+  @available(watchOS, unavailable)
+  case negativeBackgroundTapState
+  @available(watchOS, unavailable)
+  case positiveBackgroundTapState
+  @available(watchOS, unavailable)
+  case criticalBackgroundTapState
+  @available(watchOS, unavailable)
+  case informationBackgroundTapState
+  @available(watchOS, unavailable)
+  case neutralBackgroundTapState
+  case separator
+  case separatorOpaque
+  @available(watchOS, unavailable)
+  case header
+  @available(watchOS, unavailable)
+  case headerBlended
+  @available(watchOS, unavailable)
+  case barTransparent
+  @available(watchOS, unavailable)
+  case contrastElement
+  @available(watchOS, unavailable)
+  case footer
+  @available(watchOS, unavailable)
+  case cellBackground
+  @available(watchOS, unavailable)
+  case chrome
+  @available(watchOS, unavailable)
+  case chromeSecondary
+  @available(watchOS, unavailable)
+  case chart1
+  @available(watchOS, unavailable)
+  case chart2
+  @available(watchOS, unavailable)
+  case chart3
+  @available(watchOS, unavailable)
+  case chart4
+  @available(watchOS, unavailable)
+  case chart5
+  @available(watchOS, unavailable)
+  case chart6
+  @available(watchOS, unavailable)
+  case chart7
+  @available(watchOS, unavailable)
+  case chart8
+  @available(watchOS, unavailable)
+  case chart9
+  @available(watchOS, unavailable)
+  case chart10
+  @available(watchOS, unavailable)
+  case chart11
+  @available(watchOS, unavailable)
+  case stockUpStroke
+  @available(watchOS, unavailable)
+  case stockDownStroke
+  @available(watchOS, unavailable)
+  case map1
+  @available(watchOS, unavailable)
+  case map2
+  @available(watchOS, unavailable)
+  case map3
+  @available(watchOS, unavailable)
+  case map4
+  @available(watchOS, unavailable)
+  case map5
+  @available(watchOS, unavailable)
+  case map6
+  @available(watchOS, unavailable)
+  case map7
+  @available(watchOS, unavailable)
+  case map8
+  @available(watchOS, unavailable)
+  case map9
+  @available(watchOS, unavailable)
+  case map10
+  @available(watchOS, unavailable)
+  case customColor1
+  @available(watchOS, unavailable)
+  case customColor2
+  @available(watchOS, unavailable)
+  case customColor3
+  @available(watchOS, unavailable)
+  case customColor4
+  @available(watchOS, unavailable)
+  case customColor5
+  @available(watchOS, unavailable)
+  case customColor6
+  @available(watchOS, unavailable)
+  case esriEdit
+  @available(watchOS, unavailable)
+  case jouleBrand
+  @available(watchOS, unavailable)
+  case jouleAccent1
+  @available(watchOS, unavailable)
+  case jouleAccent2
+  @available(watchOS, unavailable)
+  case jouleAccent3
+  @available(watchOS, unavailable)
+  case jouleGradient1
+  @available(watchOS, unavailable)
+  case jouleGradient2
+  @available(*, unavailable, renamed: "quaternaryLabel")
+  @available(watchOS, unavailable)
+  case quarternaryLabel
+  @available(*, unavailable, renamed: "quaternaryFill")
+  @available(watchOS, unavailable)
+  case quarternaryFill
+  @available(*, deprecated, renamed: "header")
+  @available(watchOS, unavailable)
+  case shell
+  @available(*, deprecated, renamed: "primaryGroupedBackground")
+  @available(watchOS, unavailable)
+  case background1
+  @available(*, deprecated, renamed: "tertiaryGroupedBackground")
+  @available(watchOS, unavailable)
+  case background2
+  @available(*, deprecated, renamed: "separatorOpaque")
+  @available(watchOS, unavailable)
+  case line
+  @available(*, deprecated, renamed: "primaryLabel")
+  @available(watchOS, unavailable)
+  case primary1
+  @available(*, deprecated, renamed: "secondaryLabel")
+  @available(watchOS, unavailable)
+  case primary2
+  @available(*, deprecated, renamed: "tertiaryLabel")
+  @available(watchOS, unavailable)
+  case primary3
+  @available(*, deprecated, renamed: "secondaryFill")
+  @available(watchOS, unavailable)
+  case primary4
+  @available(*, deprecated, renamed: "footer")
+  @available(watchOS, unavailable)
+  case primary5
+  @available(*, deprecated, renamed: "secondaryGroupedBackground")
+  @available(watchOS, unavailable)
+  case primary6
+  @available(*, deprecated, renamed: "quaternaryLabel")
+  @available(watchOS, unavailable)
+  case primary7
+  @available(*, deprecated, renamed: "barTransparent")
+  @available(watchOS, unavailable)
+  case primary8
+  @available(*, deprecated, renamed: "separator")
+  @available(watchOS, unavailable)
+  case primary9
+  @available(*, deprecated, renamed: "contrastElement")
+  @available(watchOS, unavailable)
+  case primary10
+  @available(*, deprecated, renamed: "tintColor")
+  @available(watchOS, unavailable)
+  case tintColorLight
+  @available(*, deprecated, renamed: "tintColor2")
+  @available(watchOS, unavailable)
+  case tintColorDark
+  @available(*, deprecated, renamed: "tintColorTapStateLight")
+  @available(watchOS, unavailable)
+  case tintColorTapStateLight
+  @available(*, deprecated, renamed: "tintColorTapStateDark")
+  @available(watchOS, unavailable)
+  case tintColorTapStateDark
+  @available(*, deprecated, renamed: "quaternaryFill")
+  @available(watchOS, unavailable)
+  case cellBackgroundTapState
+  @available(*, deprecated, renamed: "cardShadow")
+  @available(watchOS, unavailable)
+  case shadow
+  @available(*, deprecated, renamed: "negativeLabel")
+  @available(watchOS, unavailable)
+  case negative
+  @available(*, deprecated, renamed: "positiveLabel")
+  @available(watchOS, unavailable)
+  case positive
+  @available(*, deprecated, renamed: "criticalLabel")
+  @available(watchOS, unavailable)
+  case critical
+  @available(iOS, deprecated, renamed: "mango3")
+  @available(macOS, deprecated, renamed: "mango3")
+  @available(macCatalyst, deprecated, renamed: "mango3")
+  case accent1
+  @available(*, deprecated, renamed: "mango4")
+  @available(watchOS, unavailable)
+  case accent1b
+  @available(iOS, deprecated, renamed: "red4")
+  @available(macOS, deprecated, renamed: "red4")
+  @available(macCatalyst, deprecated, renamed: "red4")
+  case accent2
+  @available(*, deprecated, renamed: "red5")
+  @available(watchOS, unavailable)
+  case accent2b
+  @available(iOS, deprecated, renamed: "pink5")
+  @available(macOS, deprecated, renamed: "pink5")
+  @available(macCatalyst, deprecated, renamed: "pink5")
+  case accent3
+  @available(iOS, deprecated, renamed: "pink6")
+  @available(macOS, deprecated, renamed: "pink6")
+  @available(macCatalyst, deprecated, renamed: "pink6")
+  case accent4
+  @available(iOS, deprecated, renamed: "indigo6")
+  @available(macOS, deprecated, renamed: "indigo6")
+  @available(macCatalyst, deprecated, renamed: "indigo6")
+  case accent5
+  @available(iOS, deprecated, renamed: "blue6")
+  @available(macOS, deprecated, renamed: "blue6")
+  @available(macCatalyst, deprecated, renamed: "blue6")
+  case accent6
+  @available(*, deprecated, renamed: "blue7")
+  @available(watchOS, unavailable)
+  case accent6b
+  @available(iOS, deprecated, renamed: "teal4")
+  @available(macOS, deprecated, renamed: "teal4")
+  @available(macCatalyst, deprecated, renamed: "teal4")
+  case accent7
+  @available(*, deprecated, renamed: "teal5")
+  @available(watchOS, unavailable)
+  case accent7b
+  @available(iOS, deprecated, renamed: "green4")
+  @available(macOS, deprecated, renamed: "green4")
+  @available(macCatalyst, deprecated, renamed: "green4")
+  case accent8
+  @available(iOS, deprecated, renamed: "indigo5")
+  @available(macOS, deprecated, renamed: "indigo5")
+  @available(macCatalyst, deprecated, renamed: "indigo5")
+  case accent9
+  @available(*, deprecated, renamed: "grey5")
+  @available(watchOS, unavailable)
+  case accent10
+  @available(*, deprecated, renamed: "grey4")
+  @available(watchOS, unavailable)
+  case accent10b
+  @available(*, deprecated, renamed: "header")
+  @available(watchOS, unavailable)
+  case navigationBar
+  @available(*, deprecated, renamed: "header")
+  @available(watchOS, unavailable)
+  case backgroundGradientTop
+  @available(*, deprecated, renamed: "header")
+  @available(watchOS, unavailable)
+  case backgroundGradientBottom
+  @available(*, deprecated, renamed: "primaryBackground")
+  @available(watchOS, unavailable)
+  case backgroundBase
+  public static var allCases: [FioriThemeManager.ColorStyle]
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [FioriThemeManager.ColorStyle]
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ColorVariant {
+  case light
+  case dark
+  case elevatedLight
+  case elevatedDark
+  case contrastLight
+  case contrastDark
+  case elevatedContrastLight
+  case elevatedContrastDark
+  public static func == (a: FioriThemeManager.ColorVariant, b: FioriThemeManager.ColorVariant) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension FioriThemeManager.ColorVariant : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+public enum FioriIcon {
+  public enum actions {
+    public static let accept: SwiftUI.Image
+    public static let actionSettingsFill: SwiftUI.Image
+    public static let actionSettings: SwiftUI.Image
+    public static let action: SwiftUI.Image
+    public static let activate: SwiftUI.Image
+    public static let activities: SwiftUI.Image
+    public static let addActivity: SwiftUI.Image
+    public static let addCoursebook: SwiftUI.Image
+    public static let addDocument: SwiftUI.Image
+    public static let addEmployee: SwiftUI.Image
+    public static let addEquipment: SwiftUI.Image
+    public static let addFavorite: SwiftUI.Image
+    public static let addFilter: SwiftUI.Image
+    public static let addFolder: SwiftUI.Image
+    public static let addPhoto: SwiftUI.Image
+    public static let addProcess: SwiftUI.Image
+    public static let addProduct: SwiftUI.Image
+    public static let add: SwiftUI.Image
+    public static let ai: SwiftUI.Image
+    public static let alphabeticalOrder: SwiftUI.Image
+    public static let attachment: SwiftUI.Image
+    public static let backToTop: SwiftUI.Image
+    public static let begin: SwiftUI.Image
+    public static let blur: SwiftUI.Image
+    public static let boldText: SwiftUI.Image
+    public static let bookmark: SwiftUI.Image
+    public static let bulletTextFill: SwiftUI.Image
+    public static let bulletText: SwiftUI.Image
+    public static let call: SwiftUI.Image
+    public static let camera: SwiftUI.Image
+    public static let cancelMaintenance: SwiftUI.Image
+    public static let cancelShare: SwiftUI.Image
+    public static let cancel: SwiftUI.Image
+    public static let cause: SwiftUI.Image
+    public static let chainLink: SwiftUI.Image
+    public static let clearFilter: SwiftUI.Image
+    public static let collapseGroup: SwiftUI.Image
+    public static let collapse: SwiftUI.Image
+    public static let comment: SwiftUI.Image
+    public static let compare2: SwiftUI.Image
+    public static let complete: SwiftUI.Image
+    public static let copy: SwiftUI.Image
+    public static let createEntryTime: SwiftUI.Image
+    public static let createForm: SwiftUI.Image
+    public static let createLeaveRequest: SwiftUI.Image
+    public static let createSession: SwiftUI.Image
+    public static let create: SwiftUI.Image
+    public static let crop: SwiftUI.Image
+    public static let cursorArrow: SwiftUI.Image
+    public static let customize: SwiftUI.Image
+    public static let decline: SwiftUI.Image
+    public static let decreaseLineHeight: SwiftUI.Image
+    public static let deleteFill: SwiftUI.Image
+    public static let delete: SwiftUI.Image
+    public static let detailView: SwiftUI.Image
+    public static let developerSettings: SwiftUI.Image
+    public static let disconnected: SwiftUI.Image
+    public static let displayMore: SwiftUI.Image
+    public static let display: SwiftUI.Image
+    public static let down: SwiftUI.Image
+    public static let downloadFromCloud: SwiftUI.Image
+    public static let download: SwiftUI.Image
+    public static let drawRectangle: SwiftUI.Image
+    public static let drillDown: SwiftUI.Image
+    public static let drillUp: SwiftUI.Image
+    public static let dropDownList: SwiftUI.Image
+    public static let dropdown: SwiftUI.Image
+    public static let duplicate: SwiftUI.Image
+    public static let editOutside: SwiftUI.Image
+    public static let edit: SwiftUI.Image
+    public static let emailRead: SwiftUI.Image
+    public static let email: SwiftUI.Image
+    public static let enterMore: SwiftUI.Image
+    public static let eraser: SwiftUI.Image
+    public static let exitFullScreen: SwiftUI.Image
+    public static let expandGroup: SwiftUI.Image
+    public static let expand: SwiftUI.Image
+    public static let favoriteList: SwiftUI.Image
+    public static let favorite: SwiftUI.Image
+    public static let faxMachine: SwiftUI.Image
+    public static let feed: SwiftUI.Image
+    public static let filterFill: SwiftUI.Image
+    public static let filter: SwiftUI.Image
+    public static let flag: SwiftUI.Image
+    public static let fullScreen: SwiftUI.Image
+    public static let fx: SwiftUI.Image
+    public static let generalLeaveRequest: SwiftUI.Image
+    public static let generateShortcut: SwiftUI.Image
+    public static let group2: SwiftUI.Image
+    public static let halfStar: SwiftUI.Image
+    public static let heading1: SwiftUI.Image
+    public static let heading2: SwiftUI.Image
+    public static let heading3: SwiftUI.Image
+    public static let hide: SwiftUI.Image
+    public static let hint: SwiftUI.Image
+    public static let homeFill: SwiftUI.Image
+    public static let homeShare: SwiftUI.Image
+    public static let home: SwiftUI.Image
+    public static let horizontalGrip: SwiftUI.Image
+    public static let imageViewer: SwiftUI.Image
+    public static let inboxFill: SwiftUI.Image
+    public static let inbox: SwiftUI.Image
+    public static let incomingCall: SwiftUI.Image
+    public static let increaseLineHeight: SwiftUI.Image
+    public static let indent: SwiftUI.Image
+    public static let inspectDown: SwiftUI.Image
+    public static let inspect: SwiftUI.Image
+    public static let inspection: SwiftUI.Image
+    public static let italicText: SwiftUI.Image
+    public static let journeyArrive: SwiftUI.Image
+    public static let journeyChange: SwiftUI.Image
+    public static let journeyDepart: SwiftUI.Image
+    public static let keyUserSettings: SwiftUI.Image
+    public static let keyboardAndMouse: SwiftUI.Image
+    public static let legend: SwiftUI.Image
+    public static let less: SwiftUI.Image
+    public static let list: SwiftUI.Image
+    public static let locateMe: SwiftUI.Image
+    public static let locked: SwiftUI.Image
+    public static let log: SwiftUI.Image
+    public static let mediaForward: SwiftUI.Image
+    public static let mediaPause: SwiftUI.Image
+    public static let mediaPlay: SwiftUI.Image
+    public static let mediaReverse: SwiftUI.Image
+    public static let mediaRewind: SwiftUI.Image
+    public static let menuFill: SwiftUI.Image
+    public static let menu: SwiftUI.Image
+    public static let menu2: SwiftUI.Image
+    public static let microphone: SwiftUI.Image
+    public static let minimize: SwiftUI.Image
+    public static let move: SwiftUI.Image
+    public static let multiSelect: SwiftUI.Image
+    public static let multiselectAll: SwiftUI.Image
+    public static let multiselectNone: SwiftUI.Image
+    public static let myView: SwiftUI.Image
+    public static let navBack: SwiftUI.Image
+    public static let navigationDownArrow: SwiftUI.Image
+    public static let navigationLeftArrow: SwiftUI.Image
+    public static let navigationRightArrow: SwiftUI.Image
+    public static let navigationUpArrow: SwiftUI.Image
+    public static let negative: SwiftUI.Image
+    public static let notes: SwiftUI.Image
+    public static let notification2: SwiftUI.Image
+    public static let numberedText: SwiftUI.Image
+    public static let openCommandField: SwiftUI.Image
+    public static let outbox: SwiftUI.Image
+    public static let outdent: SwiftUI.Image
+    public static let outgoingCall: SwiftUI.Image
+    public static let overflow: SwiftUI.Image
+    public static let paging: SwiftUI.Image
+    public static let paperPlane: SwiftUI.Image
+    public static let paste: SwiftUI.Image
+    public static let pause: SwiftUI.Image
+    public static let paymentApproval: SwiftUI.Image
+    public static let pdfReader: SwiftUI.Image
+    public static let phone: SwiftUI.Image
+    public static let pixelate: SwiftUI.Image
+    public static let play: SwiftUI.Image
+    public static let popupWindow: SwiftUI.Image
+    public static let positive: SwiftUI.Image
+    public static let post: SwiftUI.Image
+    public static let print: SwiftUI.Image
+    public static let process: SwiftUI.Image
+    public static let projector: SwiftUI.Image
+    public static let pullDown: SwiftUI.Image
+    public static let pushpinOff: SwiftUI.Image
+    public static let pushpinOn: SwiftUI.Image
+    public static let receipt: SwiftUI.Image
+    public static let record: SwiftUI.Image
+    public static let redo: SwiftUI.Image
+    public static let refresh: SwiftUI.Image
+    public static let repost: SwiftUI.Image
+    public static let request: SwiftUI.Image
+    public static let reset: SwiftUI.Image
+    public static let resizeCorner: SwiftUI.Image
+    public static let resizeHorizontal: SwiftUI.Image
+    public static let resize: SwiftUI.Image
+    public static let resizeVertical: SwiftUI.Image
+    public static let response: SwiftUI.Image
+    public static let restart: SwiftUI.Image
+    public static let save: SwiftUI.Image
+    public static let scissors: SwiftUI.Image
+    public static let search: SwiftUI.Image
+    public static let settings: SwiftUI.Image
+    public static let share2: SwiftUI.Image
+    public static let share: SwiftUI.Image
+    public static let shield: SwiftUI.Image
+    public static let shortcut: SwiftUI.Image
+    public static let show: SwiftUI.Image
+    public static let signature: SwiftUI.Image
+    public static let simulate: SwiftUI.Image
+    public static let slimArrowDown: SwiftUI.Image
+    public static let slimArrowLeft: SwiftUI.Image
+    public static let slimArrowRight: SwiftUI.Image
+    public static let slimArrowUp: SwiftUI.Image
+    public static let sortAscending: SwiftUI.Image
+    public static let sortDescending: SwiftUI.Image
+    public static let sort: SwiftUI.Image
+    public static let sortingRanking: SwiftUI.Image
+    public static let soundLoud: SwiftUI.Image
+    public static let soundOff: SwiftUI.Image
+    public static let sound: SwiftUI.Image
+    public static let step: SwiftUI.Image
+    public static let stop: SwiftUI.Image
+    public static let switchClasses: SwiftUI.Image
+    public static let switchViews: SwiftUI.Image
+    public static let synchronize: SwiftUI.Image
+    public static let syntax: SwiftUI.Image
+    public static let syringe: SwiftUI.Image
+    public static let sysAdd: SwiftUI.Image
+    public static let sysBack2: SwiftUI.Image
+    public static let sysBack: SwiftUI.Image
+    public static let sysCancel2: SwiftUI.Image
+    public static let sysCancel: SwiftUI.Image
+    public static let sysEnter2: SwiftUI.Image
+    public static let sysEnterFill: SwiftUI.Image
+    public static let sysEnter: SwiftUI.Image
+    public static let sysFindNext: SwiftUI.Image
+    public static let sysFind: SwiftUI.Image
+    public static let sysFirstPage: SwiftUI.Image
+    public static let sysHelp2: SwiftUI.Image
+    public static let sysHelpFill: SwiftUI.Image
+    public static let sysHelp: SwiftUI.Image
+    public static let sysLastPage: SwiftUI.Image
+    public static let sysMinus: SwiftUI.Image
+    public static let sysNextPage: SwiftUI.Image
+    public static let sysPrevPage: SwiftUI.Image
+    public static let systemExit2: SwiftUI.Image
+    public static let systemExit: SwiftUI.Image
+    public static let tag: SwiftUI.Image
+    public static let tags: SwiftUI.Image
+    public static let textAlignCenter: SwiftUI.Image
+    public static let textAlignJustified: SwiftUI.Image
+    public static let textAlignLeft: SwiftUI.Image
+    public static let textAlignRight: SwiftUI.Image
+    public static let textFormatting: SwiftUI.Image
+    public static let thumbDown: SwiftUI.Image
+    public static let thumbUp: SwiftUI.Image
+    public static let toasterDown: SwiftUI.Image
+    public static let toasterUp: SwiftUI.Image
+    public static let touch: SwiftUI.Image
+    public static let trendDown: SwiftUI.Image
+    public static let trendUp: SwiftUI.Image
+    public static let uiNotifications: SwiftUI.Image
+    public static let underlineText: SwiftUI.Image
+    public static let undo: SwiftUI.Image
+    public static let unfavorite: SwiftUI.Image
+    public static let unlocked: SwiftUI.Image
+    public static let up: SwiftUI.Image
+    public static let upload: SwiftUI.Image
+    public static let uploadToCloud: SwiftUI.Image
+    public static let userEdit: SwiftUI.Image
+    public static let userSettings: SwiftUI.Image
+    public static let validate: SwiftUI.Image
+    public static let valueHelp: SwiftUI.Image
+    public static let verticalGrip: SwiftUI.Image
+    public static let video: SwiftUI.Image
+    public static let visits: SwiftUI.Image
+    public static let webCam: SwiftUI.Image
+    public static let workflowTasks: SwiftUI.Image
+    public static let wrench: SwiftUI.Image
+    public static let writeNewDocument: SwiftUI.Image
+    public static let writeNew: SwiftUI.Image
+    public static let zoomIn: SwiftUI.Image
+    public static let zoomOut: SwiftUI.Image
+  }
+  public enum arrows {
+    public static let arrowBottom: SwiftUI.Image
+    public static let arrowDown: SwiftUI.Image
+    public static let arrowLeft: SwiftUI.Image
+    public static let arrowRight: SwiftUI.Image
+    public static let arrowTop: SwiftUI.Image
+    public static let backToTop: SwiftUI.Image
+    public static let begin: SwiftUI.Image
+    public static let cause: SwiftUI.Image
+    public static let chartAxis: SwiftUI.Image
+    public static let closeCommandField: SwiftUI.Image
+    public static let collapseAll: SwiftUI.Image
+    public static let collapseGroup: SwiftUI.Image
+    public static let combine: SwiftUI.Image
+    public static let down: SwiftUI.Image
+    public static let downloadFromCloud: SwiftUI.Image
+    public static let download: SwiftUI.Image
+    public static let drillDown: SwiftUI.Image
+    public static let drillUp: SwiftUI.Image
+    public static let dropDownList: SwiftUI.Image
+    public static let dropdown: SwiftUI.Image
+    public static let duplicate: SwiftUI.Image
+    public static let editOutside: SwiftUI.Image
+    public static let enterMore: SwiftUI.Image
+    public static let expandAll: SwiftUI.Image
+    public static let expandGroup: SwiftUI.Image
+    public static let feederArrow: SwiftUI.Image
+    public static let forward: SwiftUI.Image
+    public static let fullScreen: SwiftUI.Image
+    public static let inboxFill: SwiftUI.Image
+    public static let inbox: SwiftUI.Image
+    public static let initiative: SwiftUI.Image
+    public static let inspect: SwiftUI.Image
+    public static let journeyArrive: SwiftUI.Image
+    public static let journeyChange: SwiftUI.Image
+    public static let journeyDepart: SwiftUI.Image
+    public static let locateMe: SwiftUI.Image
+    public static let mediaForward: SwiftUI.Image
+    public static let mediaPause: SwiftUI.Image
+    public static let mediaPlay: SwiftUI.Image
+    public static let mediaReverse: SwiftUI.Image
+    public static let mediaRewind: SwiftUI.Image
+    public static let move: SwiftUI.Image
+    public static let navBack: SwiftUI.Image
+    public static let navigationDownArrow: SwiftUI.Image
+    public static let navigationLeftArrow: SwiftUI.Image
+    public static let navigationRightArrow: SwiftUI.Image
+    public static let navigationUpArrow: SwiftUI.Image
+    public static let openCommandField: SwiftUI.Image
+    public static let play: SwiftUI.Image
+    public static let process: SwiftUI.Image
+    public static let pullDown: SwiftUI.Image
+    public static let redo: SwiftUI.Image
+    public static let refresh: SwiftUI.Image
+    public static let repost: SwiftUI.Image
+    public static let reset: SwiftUI.Image
+    public static let resizeHorizontal: SwiftUI.Image
+    public static let resize: SwiftUI.Image
+    public static let resizeVertical: SwiftUI.Image
+    public static let response: SwiftUI.Image
+    public static let restart: SwiftUI.Image
+    public static let share: SwiftUI.Image
+    public static let shortcut: SwiftUI.Image
+    public static let slimArrowDown: SwiftUI.Image
+    public static let slimArrowLeft: SwiftUI.Image
+    public static let slimArrowRight: SwiftUI.Image
+    public static let slimArrowUp: SwiftUI.Image
+    public static let sortAscending: SwiftUI.Image
+    public static let sortDescending: SwiftUI.Image
+    public static let sort: SwiftUI.Image
+    public static let sortingRanking: SwiftUI.Image
+    public static let sourceCode: SwiftUI.Image
+    public static let split: SwiftUI.Image
+    public static let step: SwiftUI.Image
+    public static let synchronize: SwiftUI.Image
+    public static let sysBack2: SwiftUI.Image
+    public static let sysBack: SwiftUI.Image
+    public static let systemExit2: SwiftUI.Image
+    public static let systemExit: SwiftUI.Image
+    public static let trendDown: SwiftUI.Image
+    public static let trendUp: SwiftUI.Image
+    public static let undo: SwiftUI.Image
+    public static let up: SwiftUI.Image
+    public static let upload: SwiftUI.Image
+    public static let uploadToCloud: SwiftUI.Image
+    public static let visits: SwiftUI.Image
+  }
+  public enum calendars {
+    public static let accelerated: SwiftUI.Image
+    public static let addCalendar: SwiftUI.Image
+    public static let appointment2: SwiftUI.Image
+    public static let appointment: SwiftUI.Image
+    public static let calendarFill: SwiftUI.Image
+    public static let calendar: SwiftUI.Image
+    public static let checkAvailability: SwiftUI.Image
+    public static let dateTime: SwiftUI.Image
+    public static let ganttBars: SwiftUI.Image
+    public static let measurementDocument: SwiftUI.Image
+    public static let notes: SwiftUI.Image
+    public static let perDiem: SwiftUI.Image
+    public static let selectAppointments: SwiftUI.Image
+    public static let timeOff: SwiftUI.Image
+    public static let workflowTasks: SwiftUI.Image
+  }
+  public enum callout {
+    public static let comment: SwiftUI.Image
+    public static let discussion2: SwiftUI.Image
+    public static let discussion: SwiftUI.Image
+    public static let feedback: SwiftUI.Image
+    public static let helloWorld: SwiftUI.Image
+    public static let messagePopup: SwiftUI.Image
+    public static let notification2: SwiftUI.Image
+    public static let post: SwiftUI.Image
+    public static let salesNotification: SwiftUI.Image
+    public static let tagCloudChart: SwiftUI.Image
+    public static let thingType: SwiftUI.Image
+    public static let travelRequest: SwiftUI.Image
+    public static let uiNotifications: SwiftUI.Image
+  }
+  public enum charts {
+    public static let alongStackedChart: SwiftUI.Image
+    public static let areaChart: SwiftUI.Image
+    public static let barChart: SwiftUI.Image
+    public static let bubbleChart: SwiftUI.Image
+    public static let businessObjectsExperienceFill: SwiftUI.Image
+    public static let businessObjectsExperience: SwiftUI.Image
+    public static let chartAxis: SwiftUI.Image
+    public static let chartTableView: SwiftUI.Image
+    public static let chartTreeMap: SwiftUI.Image
+    public static let checklist2: SwiftUI.Image
+    public static let checklistItem2: SwiftUI.Image
+    public static let checklistItem: SwiftUI.Image
+    public static let checklist: SwiftUI.Image
+    public static let chevronPhase2: SwiftUI.Image
+    public static let chevronPhase: SwiftUI.Image
+    public static let choroplethChart: SwiftUI.Image
+    public static let circleTask2: SwiftUI.Image
+    public static let circleTaskFill: SwiftUI.Image
+    public static let circleTask: SwiftUI.Image
+    public static let columnChartDualAxis: SwiftUI.Image
+    public static let crossedLineChart: SwiftUI.Image
+    public static let donutChart: SwiftUI.Image
+    public static let filterAnalytics: SwiftUI.Image
+    public static let fullStackedChart: SwiftUI.Image
+    public static let fullStackedColumnChart: SwiftUI.Image
+    public static let ganttBars: SwiftUI.Image
+    public static let geographicBubbleChart: SwiftUI.Image
+    public static let heatmapChart: SwiftUI.Image
+    public static let horizontalBarChart2: SwiftUI.Image
+    public static let horizontalBarChart: SwiftUI.Image
+    public static let horizontalBulletChart: SwiftUI.Image
+    public static let horizontalCombinationChart: SwiftUI.Image
+    public static let horizontalStackedChart: SwiftUI.Image
+    public static let horizontalWaterfallChart: SwiftUI.Image
+    public static let legend: SwiftUI.Image
+    public static let lineChartDualAxis: SwiftUI.Image
+    public static let lineChart: SwiftUI.Image
+    public static let lineChartTimeAxis: SwiftUI.Image
+    public static let lineCharts: SwiftUI.Image
+    public static let masterTaskTriangle2: SwiftUI.Image
+    public static let masterTaskTriangle: SwiftUI.Image
+    public static let mirroredTaskCircle2: SwiftUI.Image
+    public static let mirroredTaskCircle: SwiftUI.Image
+    public static let multipleBarChart: SwiftUI.Image
+    public static let multipleLineChart: SwiftUI.Image
+    public static let multiplePieChart: SwiftUI.Image
+    public static let multipleRadarChart: SwiftUI.Image
+    public static let orgChartFill: SwiftUI.Image
+    public static let orgChart: SwiftUI.Image
+    public static let overviewChart: SwiftUI.Image
+    public static let pieChart: SwiftUI.Image
+    public static let pipelineAnalysis: SwiftUI.Image
+    public static let programTriangles2: SwiftUI.Image
+    public static let programTrianglesFill: SwiftUI.Image
+    public static let programTriangles: SwiftUI.Image
+    public static let projectDefinitionTriangle2: SwiftUI.Image
+    public static let projectDefinitionTriangle: SwiftUI.Image
+    public static let provision: SwiftUI.Image
+    public static let radarChart: SwiftUI.Image
+    public static let rhombusMilestone2: SwiftUI.Image
+    public static let rhombusMilestone: SwiftUI.Image
+    public static let scatterChart: SwiftUI.Image
+    public static let tableChart: SwiftUI.Image
+    public static let tableView: SwiftUI.Image
+    public static let tagCloudChart: SwiftUI.Image
+    public static let temperature: SwiftUI.Image
+    public static let toolsOpportunityFill: SwiftUI.Image
+    public static let toolsOpportunity: SwiftUI.Image
+    public static let tree: SwiftUI.Image
+    public static let tripReport: SwiftUI.Image
+    public static let upstackedChart: SwiftUI.Image
+    public static let verticalBarChart2: SwiftUI.Image
+    public static let verticalBarChart: SwiftUI.Image
+    public static let verticalBulletChart: SwiftUI.Image
+    public static let verticalStackedChart: SwiftUI.Image
+    public static let verticalWaterfallChart: SwiftUI.Image
+  }
+  public enum clipboards {
+    public static let activity2: SwiftUI.Image
+    public static let activityAssignedToGoal: SwiftUI.Image
+    public static let activityIndividual: SwiftUI.Image
+    public static let activityItems: SwiftUI.Image
+    public static let addActivity2: SwiftUI.Image
+    public static let clinicalTaskTracker: SwiftUI.Image
+    public static let crmServiceManager: SwiftUI.Image
+    public static let paste: SwiftUI.Image
+    public static let taskFill: SwiftUI.Image
+    public static let task: SwiftUI.Image
+    public static let workflowTasks: SwiftUI.Image
+  }
+  public enum devices {
+    public static let desktopMobile: SwiftUI.Image
+    public static let dishwasher: SwiftUI.Image
+    public static let faxMachine: SwiftUI.Image
+    public static let fobWatch: SwiftUI.Image
+    public static let fridge: SwiftUI.Image
+    public static let ipad2: SwiftUI.Image
+    public static let ipad: SwiftUI.Image
+    public static let iphone2: SwiftUI.Image
+    public static let iphone: SwiftUI.Image
+    public static let itHost: SwiftUI.Image
+    public static let itInstance: SwiftUI.Image
+    public static let itSystem: SwiftUI.Image
+    public static let laptop: SwiftUI.Image
+    public static let machine: SwiftUI.Image
+    public static let marketingCampaign: SwiftUI.Image
+    public static let microphone: SwiftUI.Image
+    public static let phone: SwiftUI.Image
+    public static let popupWindow: SwiftUI.Image
+    public static let print: SwiftUI.Image
+    public static let projector: SwiftUI.Image
+    public static let responsive: SwiftUI.Image
+    public static let simulate: SwiftUI.Image
+    public static let sysMonitor: SwiftUI.Image
+    public static let video: SwiftUI.Image
+    public static let washingMachine: SwiftUI.Image
+    public static let webCam: SwiftUI.Image
+  }
+  public enum documents {
+    public static let accountingDocumentVerification: SwiftUI.Image
+    public static let addDocument: SwiftUI.Image
+    public static let attachmentAudio: SwiftUI.Image
+    public static let attachmentEPub: SwiftUI.Image
+    public static let attachmentHtml: SwiftUI.Image
+    public static let attachmentPhoto: SwiftUI.Image
+    public static let attachmentTextFile: SwiftUI.Image
+    public static let attachmentVideo: SwiftUI.Image
+    public static let attachmentZipFile: SwiftUI.Image
+    public static let barCode: SwiftUI.Image
+    public static let clinicalOrder: SwiftUI.Image
+    public static let courseProgram: SwiftUI.Image
+    public static let createEntryTime: SwiftUI.Image
+    public static let create: SwiftUI.Image
+    public static let customerFinancialFactSheet: SwiftUI.Image
+    public static let docAttachment2: SwiftUI.Image
+    public static let docAttachment: SwiftUI.Image
+    public static let document: SwiftUI.Image
+    public static let documentText: SwiftUI.Image
+    public static let documents: SwiftUI.Image
+    public static let excelAttachment: SwiftUI.Image
+    public static let expenseReport: SwiftUI.Image
+    public static let inspection: SwiftUI.Image
+    public static let insuranceCar: SwiftUI.Image
+    public static let insuranceHouse: SwiftUI.Image
+    public static let insuranceLife: SwiftUI.Image
+    public static let measurementDocument: SwiftUI.Image
+    public static let mySalesOrder: SwiftUI.Image
+    public static let newspaper: SwiftUI.Image
+    public static let orderStatus: SwiftUI.Image
+    public static let pdfAttachment: SwiftUI.Image
+    public static let pdfReader: SwiftUI.Image
+    public static let permission: SwiftUI.Image
+    public static let pptAttachment: SwiftUI.Image
+    public static let pushpinOn: SwiftUI.Image
+    public static let request: SwiftUI.Image
+    public static let salesDocument: SwiftUI.Image
+    public static let salesOrderItem: SwiftUI.Image
+    public static let salesOrder: SwiftUI.Image
+    public static let salesQuote: SwiftUI.Image
+    public static let sysFirstPage: SwiftUI.Image
+    public static let sysLastPage: SwiftUI.Image
+    public static let sysNextPage: SwiftUI.Image
+    public static let sysPrevPage: SwiftUI.Image
+    public static let timesheet: SwiftUI.Image
+    public static let vdsFile: SwiftUI.Image
+    public static let writeNewDocument: SwiftUI.Image
+  }
+  public enum folder {
+    public static let batchPayments: SwiftUI.Image
+    public static let curriculum: SwiftUI.Image
+    public static let fallback: SwiftUI.Image
+    public static let folder2: SwiftUI.Image
+    public static let folderBlank: SwiftUI.Image
+    public static let folderFill: SwiftUI.Image
+    public static let folderFull: SwiftUI.Image
+    public static let folder: SwiftUI.Image
+    public static let openFolder: SwiftUI.Image
+    public static let workHistory: SwiftUI.Image
+  }
+  public enum form {
+    public static let approvals: SwiftUI.Image
+    public static let createForm: SwiftUI.Image
+    public static let customerOrderEntry: SwiftUI.Image
+    public static let detailView: SwiftUI.Image
+    public static let form: SwiftUI.Image
+    public static let receipt: SwiftUI.Image
+    public static let survey: SwiftUI.Image
+  }
+  public enum medical {
+    public static let accidentalLeave: SwiftUI.Image
+    public static let bed: SwiftUI.Image
+    public static let clinicalOrder: SwiftUI.Image
+    public static let clinicalTaskTracker: SwiftUI.Image
+    public static let doctor: SwiftUI.Image
+    public static let electrocardiogram: SwiftUI.Image
+    public static let electronicMedicalRecord: SwiftUI.Image
+    public static let endoscopy: SwiftUI.Image
+    public static let mriScan: SwiftUI.Image
+    public static let nurse: SwiftUI.Image
+    public static let nutritionActivity: SwiftUI.Image
+    public static let pharmacy: SwiftUI.Image
+    public static let physicalActivity: SwiftUI.Image
+    public static let sonography: SwiftUI.Image
+    public static let stethoscope: SwiftUI.Image
+    public static let syringe: SwiftUI.Image
+    public static let temperature: SwiftUI.Image
+    public static let woundsDoc: SwiftUI.Image
+    public static let xRay: SwiftUI.Image
+  }
+  public enum money {
+    public static let batchPayments: SwiftUI.Image
+    public static let capitalProjects: SwiftUI.Image
+    public static let collectionsInsight: SwiftUI.Image
+    public static let collectionsManagement: SwiftUI.Image
+    public static let commissionCheck: SwiftUI.Image
+    public static let currency: SwiftUI.Image
+    public static let customerFinancialFactSheet: SwiftUI.Image
+    public static let expenseReport: SwiftUI.Image
+    public static let leadOutdated: SwiftUI.Image
+    public static let lead: SwiftUI.Image
+    public static let loan: SwiftUI.Image
+    public static let moneyBills: SwiftUI.Image
+    public static let monitorPayments: SwiftUI.Image
+    public static let paidLeave: SwiftUI.Image
+    public static let paymentApproval: SwiftUI.Image
+    public static let perDiem: SwiftUI.Image
+    public static let receipt: SwiftUI.Image
+    public static let salesDocument: SwiftUI.Image
+    public static let salesNotification: SwiftUI.Image
+    public static let salesOrderItem: SwiftUI.Image
+    public static let salesOrder: SwiftUI.Image
+    public static let salesQuote: SwiftUI.Image
+    public static let simplePayment: SwiftUI.Image
+    public static let timeOvertime: SwiftUI.Image
+    public static let travelExpenseReportFill: SwiftUI.Image
+    public static let travelExpenseReport: SwiftUI.Image
+    public static let travelExpense: SwiftUI.Image
+    public static let unpaidLeave: SwiftUI.Image
+    public static let waiver: SwiftUI.Image
+    public static let wallet: SwiftUI.Image
+  }
+  public enum objects {
+    public static let addCoursebook: SwiftUI.Image
+    public static let addPhoto: SwiftUI.Image
+    public static let addProcess: SwiftUI.Image
+    public static let addProduct: SwiftUI.Image
+    public static let addressBook: SwiftUI.Image
+    public static let addresses: SwiftUI.Image
+    public static let arobase: SwiftUI.Image
+    public static let background: SwiftUI.Image
+    public static let badge: SwiftUI.Image
+    public static let barCode: SwiftUI.Image
+    public static let bbydActiveSales: SwiftUI.Image
+    public static let bbydDashboard: SwiftUI.Image
+    public static let bed: SwiftUI.Image
+    public static let bell2: SwiftUI.Image
+    public static let bell: SwiftUI.Image
+    public static let blankTag2: SwiftUI.Image
+    public static let blankTag: SwiftUI.Image
+    public static let boStrategyManagement: SwiftUI.Image
+    public static let border: SwiftUI.Image
+    public static let brokenLink: SwiftUI.Image
+    public static let building: SwiftUI.Image
+    public static let burglary: SwiftUI.Image
+    public static let businessByDesign: SwiftUI.Image
+    public static let businessCardFill: SwiftUI.Image
+    public static let businessCard: SwiftUI.Image
+    public static let businessObjectsExplorer: SwiftUI.Image
+    public static let businessObjectsMobileFill: SwiftUI.Image
+    public static let businessObjectsMobile: SwiftUI.Image
+    public static let businessOne: SwiftUI.Image
+    public static let camera: SwiftUI.Image
+    public static let capitalProjects: SwiftUI.Image
+    public static let card: SwiftUI.Image
+    public static let chalkboard: SwiftUI.Image
+    public static let checklist2: SwiftUI.Image
+    public static let checklistItem2: SwiftUI.Image
+    public static let checklistItem: SwiftUI.Image
+    public static let checklist: SwiftUI.Image
+    public static let chevronPhase2: SwiftUI.Image
+    public static let chevronPhase: SwiftUI.Image
+    public static let circleTask2: SwiftUI.Image
+    public static let circleTaskFill: SwiftUI.Image
+    public static let circleTask: SwiftUI.Image
+    public static let cloudCheck: SwiftUI.Image
+    public static let cloud: SwiftUI.Image
+    public static let co: SwiftUI.Image
+    public static let collectionsManagement: SwiftUI.Image
+    public static let collision: SwiftUI.Image
+    public static let colorFill: SwiftUI.Image
+    public static let compare2: SwiftUI.Image
+    public static let compare: SwiftUI.Image
+    public static let competitorFill: SwiftUI.Image
+    public static let competitor: SwiftUI.Image
+    public static let contacts: SwiftUI.Image
+    public static let courseBook: SwiftUI.Image
+    public static let creditCard: SwiftUI.Image
+    public static let crmSales: SwiftUI.Image
+    public static let cursorArrow: SwiftUI.Image
+    public static let customerView: SwiftUI.Image
+    public static let daFill: SwiftUI.Image
+    public static let da: SwiftUI.Image
+    public static let database: SwiftUI.Image
+    public static let dimension: SwiftUI.Image
+    public static let dishwasher: SwiftUI.Image
+    public static let drawRectangle: SwiftUI.Image
+    public static let eCare: SwiftUI.Image
+    public static let eLearning: SwiftUI.Image
+    public static let eamWorkOrder: SwiftUI.Image
+    public static let educationFill: SwiftUI.Image
+    public static let education: SwiftUI.Image
+    public static let electronicMedicalRecord: SwiftUI.Image
+    public static let email: SwiftUI.Image
+    public static let enablement: SwiftUI.Image
+    public static let endUserExperienceMonitoring: SwiftUI.Image
+    public static let endoscopy: SwiftUI.Image
+    public static let energySavingLightbulb: SwiftUI.Image
+    public static let example: SwiftUI.Image
+    public static let explorer: SwiftUI.Image
+    public static let factory: SwiftUI.Image
+    public static let filterAnalytics: SwiftUI.Image
+    public static let filterFacets: SwiftUI.Image
+    public static let filterFields: SwiftUI.Image
+    public static let fobWatchFill: SwiftUI.Image
+    public static let fobWatch: SwiftUI.Image
+    public static let fridge: SwiftUI.Image
+    public static let functionalLocation: SwiftUI.Image
+    public static let ganttBars: SwiftUI.Image
+    public static let globe: SwiftUI.Image
+    public static let goal: SwiftUI.Image
+    public static let goalseek: SwiftUI.Image
+    public static let grid: SwiftUI.Image
+    public static let header: SwiftUI.Image
+    public static let headset: SwiftUI.Image
+    public static let heatingCooling: SwiftUI.Image
+    public static let helloWorld: SwiftUI.Image
+    public static let horizontalGrip: SwiftUI.Image
+    public static let imageViewer: SwiftUI.Image
+    public static let initiative: SwiftUI.Image
+    public static let internetBrowser: SwiftUI.Image
+    public static let ipad2: SwiftUI.Image
+    public static let ipad: SwiftUI.Image
+    public static let iphone2: SwiftUI.Image
+    public static let iphone: SwiftUI.Image
+    public static let itHost: SwiftUI.Image
+    public static let itInstance: SwiftUI.Image
+    public static let itSystem: SwiftUI.Image
+    public static let jam: SwiftUI.Image
+    public static let key: SwiftUI.Image
+    public static let keyboardAndMouse: SwiftUI.Image
+    public static let kpiCorporatePerformance: SwiftUI.Image
+    public static let lab: SwiftUI.Image
+    public static let laptop: SwiftUI.Image
+    public static let lateness: SwiftUI.Image
+    public static let legend: SwiftUI.Image
+    public static let letter: SwiftUI.Image
+    public static let lightbulb: SwiftUI.Image
+    public static let loan: SwiftUI.Image
+    public static let locked: SwiftUI.Image
+    public static let machine: SwiftUI.Image
+    public static let managerInsight: SwiftUI.Image
+    public static let map2: SwiftUI.Image
+    public static let map3Fill: SwiftUI.Image
+    public static let map3: SwiftUI.Image
+    public static let mapFill: SwiftUI.Image
+    public static let map: SwiftUI.Image
+    public static let marketingCampaign: SwiftUI.Image
+    public static let masterTaskTriangle2: SwiftUI.Image
+    public static let masterTaskTriangle: SwiftUI.Image
+    public static let meal: SwiftUI.Image
+    public static let measure: SwiftUI.Image
+    public static let measurementDocument: SwiftUI.Image
+    public static let measuringPoint: SwiftUI.Image
+    public static let microphone: SwiftUI.Image
+    public static let mileage: SwiftUI.Image
+    public static let minimize: SwiftUI.Image
+    public static let mirroredTaskCircle2: SwiftUI.Image
+    public static let mirroredTaskCircle: SwiftUI.Image
+    public static let myView: SwiftUI.Image
+    public static let netweaverBusinessClient: SwiftUI.Image
+    public static let newspaper: SwiftUI.Image
+    public static let numberSign: SwiftUI.Image
+    public static let nutritionActivity: SwiftUI.Image
+    public static let officialService: SwiftUI.Image
+    public static let offsiteWork: SwiftUI.Image
+    public static let opportunity: SwiftUI.Image
+    public static let overlay: SwiftUI.Image
+    public static let palette: SwiftUI.Image
+    public static let paperPlane: SwiftUI.Image
+    public static let performance: SwiftUI.Image
+    public static let phone: SwiftUI.Image
+    public static let photoVoltaic: SwiftUI.Image
+    public static let picture: SwiftUI.Image
+    public static let pipelineAnalysis: SwiftUI.Image
+    public static let pool: SwiftUI.Image
+    public static let primaryKey: SwiftUI.Image
+    public static let print: SwiftUI.Image
+    public static let productFill: SwiftUI.Image
+    public static let product: SwiftUI.Image
+    public static let programTriangles2: SwiftUI.Image
+    public static let programTrianglesFill: SwiftUI.Image
+    public static let programTriangles: SwiftUI.Image
+    public static let projectDefinitionTriangle2: SwiftUI.Image
+    public static let projectDefinitionTriangle: SwiftUI.Image
+    public static let projector: SwiftUI.Image
+    public static let pushpinOff: SwiftUI.Image
+    public static let puzzle: SwiftUI.Image
+    public static let qrCode: SwiftUI.Image
+    public static let rhombusMilestone2: SwiftUI.Image
+    public static let rhombusMilestone: SwiftUI.Image
+    public static let s4hana: SwiftUI.Image
+    public static let sapBox: SwiftUI.Image
+    public static let sapLogoShape: SwiftUI.Image
+    public static let sapUi5: SwiftUI.Image
+    public static let save: SwiftUI.Image
+    public static let scissors: SwiftUI.Image
+    public static let screenSplitOne: SwiftUI.Image
+    public static let screenSplitThree: SwiftUI.Image
+    public static let screenSplitTwo: SwiftUI.Image
+    public static let shelf: SwiftUI.Image
+    public static let shield: SwiftUI.Image
+    public static let simulate: SwiftUI.Image
+    public static let soccer: SwiftUI.Image
+    public static let soundLoud: SwiftUI.Image
+    public static let soundOff: SwiftUI.Image
+    public static let sound: SwiftUI.Image
+    public static let studyLeaveFill: SwiftUI.Image
+    public static let studyLeave: SwiftUI.Image
+    public static let suitcaseFill: SwiftUI.Image
+    public static let suitcase: SwiftUI.Image
+    public static let sysMonitor: SwiftUI.Image
+    public static let tableChart: SwiftUI.Image
+    public static let tableColumn: SwiftUI.Image
+    public static let tableRow: SwiftUI.Image
+    public static let tableView: SwiftUI.Image
+    public static let tag: SwiftUI.Image
+    public static let tags: SwiftUI.Image
+    public static let targetGroupFill: SwiftUI.Image
+    public static let targetGroup: SwiftUI.Image
+    public static let technicalObject: SwiftUI.Image
+    public static let temperature: SwiftUI.Image
+    public static let theater: SwiftUI.Image
+    public static let toasterDown: SwiftUI.Image
+    public static let toasterTop: SwiftUI.Image
+    public static let toasterUp: SwiftUI.Image
+    public static let toolsOpportunityFill: SwiftUI.Image
+    public static let toolsOpportunity: SwiftUI.Image
+    public static let touch: SwiftUI.Image
+    public static let tree: SwiftUI.Image
+    public static let twoKeys: SwiftUI.Image
+    public static let umbrella: SwiftUI.Image
+    public static let unlocked: SwiftUI.Image
+    public static let unwired: SwiftUI.Image
+    public static let verticalGrip: SwiftUI.Image
+    public static let video: SwiftUI.Image
+    public static let wallet: SwiftUI.Image
+    public static let washingMachine: SwiftUI.Image
+    public static let weatherProofing: SwiftUI.Image
+    public static let webCam: SwiftUI.Image
+    public static let widgets: SwiftUI.Image
+    public static let windowsDoors: SwiftUI.Image
+    public static let world: SwiftUI.Image
+  }
+  public enum people {
+    public static let accessibility: SwiftUI.Image
+    public static let account: SwiftUI.Image
+    public static let activityIndividual: SwiftUI.Image
+    public static let addContact: SwiftUI.Image
+    public static let addEmployee: SwiftUI.Image
+    public static let biometricFace: SwiftUI.Image
+    public static let biometricThumb: SwiftUI.Image
+    public static let businessCardFill: SwiftUI.Image
+    public static let businessCard: SwiftUI.Image
+    public static let citizenConnect: SwiftUI.Image
+    public static let collaborateFill: SwiftUI.Image
+    public static let collaborate: SwiftUI.Image
+    public static let companyViewFill: SwiftUI.Image
+    public static let companyView: SwiftUI.Image
+    public static let customerAndContacts: SwiftUI.Image
+    public static let customerAndSupplier: SwiftUI.Image
+    public static let customerBriefing: SwiftUI.Image
+    public static let customerFill: SwiftUI.Image
+    public static let customerHistory: SwiftUI.Image
+    public static let customer: SwiftUI.Image
+    public static let decision: SwiftUI.Image
+    public static let doctor: SwiftUI.Image
+    public static let employeeApprovals: SwiftUI.Image
+    public static let employeeLookup: SwiftUI.Image
+    public static let employeePane: SwiftUI.Image
+    public static let employeeRejections: SwiftUI.Image
+    public static let employee: SwiftUI.Image
+    public static let familyCare: SwiftUI.Image
+    public static let familyProtection: SwiftUI.Image
+    public static let female: SwiftUI.Image
+    public static let genderMaleAndFemale: SwiftUI.Image
+    public static let group: SwiftUI.Image
+    public static let hrApproval: SwiftUI.Image
+    public static let ideaWall: SwiftUI.Image
+    public static let kpiManagingMyArea: SwiftUI.Image
+    public static let leads: SwiftUI.Image
+    public static let learningAssistant: SwiftUI.Image
+    public static let male: SwiftUI.Image
+    public static let manager: SwiftUI.Image
+    public static let meetingRoom: SwiftUI.Image
+    public static let monitorPayments: SwiftUI.Image
+    public static let mySalesOrder: SwiftUI.Image
+    public static let myView: SwiftUI.Image
+    public static let nonBinary: SwiftUI.Image
+    public static let nurse: SwiftUI.Image
+    public static let opportunities: SwiftUI.Image
+    public static let peopleConnected: SwiftUI.Image
+    public static let personPlaceholderFill: SwiftUI.Image
+    public static let personPlaceholder: SwiftUI.Image
+    public static let personnelView: SwiftUI.Image
+    public static let physicalActivity: SwiftUI.Image
+    public static let `private`: SwiftUI.Image
+    public static let role: SwiftUI.Image
+    public static let supplier: SwiftUI.Image
+    public static let switchClasses: SwiftUI.Image
+    public static let userEdit: SwiftUI.Image
+    public static let userSettings: SwiftUI.Image
+    public static let visits: SwiftUI.Image
+    public static let woundsDoc: SwiftUI.Image
+  }
+  public enum places {
+    public static let building: SwiftUI.Image
+    public static let capitalProjects: SwiftUI.Image
+    public static let cloud: SwiftUI.Image
+    public static let createLeaveRequest: SwiftUI.Image
+    public static let doctor: SwiftUI.Image
+    public static let factory: SwiftUI.Image
+    public static let generalLeaveRequest: SwiftUI.Image
+    public static let globe: SwiftUI.Image
+    public static let homeFill: SwiftUI.Image
+    public static let homeShare: SwiftUI.Image
+    public static let home: SwiftUI.Image
+    public static let jam: SwiftUI.Image
+    public static let locateMe: SwiftUI.Image
+    public static let map2: SwiftUI.Image
+    public static let map3Fill: SwiftUI.Image
+    public static let map3: SwiftUI.Image
+    public static let mapFill: SwiftUI.Image
+    public static let map: SwiftUI.Image
+    public static let meal: SwiftUI.Image
+    public static let mileage: SwiftUI.Image
+    public static let officialService: SwiftUI.Image
+    public static let offsiteWork: SwiftUI.Image
+    public static let pool: SwiftUI.Image
+    public static let retailStore: SwiftUI.Image
+    public static let theater: SwiftUI.Image
+    public static let world: SwiftUI.Image
+  }
+  public enum shopping {
+    public static let basketFill: SwiftUI.Image
+    public static let basket: SwiftUI.Image
+    public static let cart2: SwiftUI.Image
+    public static let cart3: SwiftUI.Image
+    public static let cart4: SwiftUI.Image
+    public static let cart5: SwiftUI.Image
+    public static let cartApproval: SwiftUI.Image
+    public static let cartFull: SwiftUI.Image
+    public static let cart: SwiftUI.Image
+    public static let retailStoreManager: SwiftUI.Image
+    public static let retailStore: SwiftUI.Image
+  }
+  public enum status {
+    public static let accidentalLeave: SwiftUI.Image
+    public static let alert: SwiftUI.Image
+    public static let appearOffline: SwiftUI.Image
+    public static let away: SwiftUI.Image
+    public static let badge: SwiftUI.Image
+    public static let bookmark: SwiftUI.Image
+    public static let brokenLink: SwiftUI.Image
+    public static let busy: SwiftUI.Image
+    public static let cancelMaintenance: SwiftUI.Image
+    public static let cancelShare: SwiftUI.Image
+    public static let cancel: SwiftUI.Image
+    public static let connected: SwiftUI.Image
+    public static let decision: SwiftUI.Image
+    public static let disconnected: SwiftUI.Image
+    public static let employeeApprovals: SwiftUI.Image
+    public static let employeeRejections: SwiftUI.Image
+    public static let error: SwiftUI.Image
+    public static let flag: SwiftUI.Image
+    public static let goal: SwiftUI.Image
+    public static let goalseek: SwiftUI.Image
+    public static let highPriority: SwiftUI.Image
+    public static let history: SwiftUI.Image
+    public static let hrApproval: SwiftUI.Image
+    public static let inProgress: SwiftUI.Image
+    public static let incident: SwiftUI.Image
+    public static let information: SwiftUI.Image
+    public static let lab: SwiftUI.Image
+    public static let lateness: SwiftUI.Image
+    public static let leadOutdated: SwiftUI.Image
+    public static let lead: SwiftUI.Image
+    public static let locked: SwiftUI.Image
+    public static let messageError: SwiftUI.Image
+    public static let messageInformation: SwiftUI.Image
+    public static let messagePopup: SwiftUI.Image
+    public static let messageSuccess: SwiftUI.Image
+    public static let messageWarning: SwiftUI.Image
+    public static let notificationFill: SwiftUI.Image
+    public static let notification: SwiftUI.Image
+    public static let permission: SwiftUI.Image
+    public static let `private`: SwiftUI.Image
+    public static let qualityIssue: SwiftUI.Image
+    public static let questionMark: SwiftUI.Image
+    public static let role: SwiftUI.Image
+    public static let statusCompleted: SwiftUI.Image
+    public static let statusCritical: SwiftUI.Image
+    public static let statusError: SwiftUI.Image
+    public static let statusInProcess: SwiftUI.Image
+    public static let statusInactive: SwiftUI.Image
+    public static let statusNegative: SwiftUI.Image
+    public static let statusPositive: SwiftUI.Image
+    public static let sysCancel: SwiftUI.Image
+    public static let sysEnter2: SwiftUI.Image
+    public static let sysEnterFill: SwiftUI.Image
+    public static let sysEnter: SwiftUI.Image
+    public static let sysHelp2: SwiftUI.Image
+    public static let sysHelpFill: SwiftUI.Image
+    public static let sysHelp: SwiftUI.Image
+    public static let targetGroupFill: SwiftUI.Image
+    public static let targetGroup: SwiftUI.Image
+    public static let temperature: SwiftUI.Image
+    public static let toBeReviewed: SwiftUI.Image
+    public static let travelRequest: SwiftUI.Image
+    public static let tripReport: SwiftUI.Image
+    public static let unlocked: SwiftUI.Image
+    public static let validate: SwiftUI.Image
+    public static let warning: SwiftUI.Image
+    public static let warning2: SwiftUI.Image
+  }
+  public enum tables {
+    public static let chartTableView: SwiftUI.Image
+    public static let checklist2: SwiftUI.Image
+    public static let checklistItem2: SwiftUI.Image
+    public static let checklistItem: SwiftUI.Image
+    public static let checklist: SwiftUI.Image
+    public static let chevronPhase2: SwiftUI.Image
+    public static let chevronPhase: SwiftUI.Image
+    public static let circleTask2: SwiftUI.Image
+    public static let circleTaskFill: SwiftUI.Image
+    public static let circleTask: SwiftUI.Image
+    public static let clearAll: SwiftUI.Image
+    public static let detailLess: SwiftUI.Image
+    public static let detailMore: SwiftUI.Image
+    public static let masterTaskTriangle2: SwiftUI.Image
+    public static let masterTaskTriangle: SwiftUI.Image
+    public static let mirroredTaskCircle2: SwiftUI.Image
+    public static let mirroredTaskCircle: SwiftUI.Image
+    public static let programTriangles2: SwiftUI.Image
+    public static let programTrianglesFill: SwiftUI.Image
+    public static let programTriangles: SwiftUI.Image
+    public static let projectDefinitionTriangle2: SwiftUI.Image
+    public static let projectDefinitionTriangle: SwiftUI.Image
+    public static let provision: SwiftUI.Image
+    public static let rhombusMilestone2: SwiftUI.Image
+    public static let rhombusMilestone: SwiftUI.Image
+    public static let sum: SwiftUI.Image
+    public static let tableChart: SwiftUI.Image
+    public static let tableColumn: SwiftUI.Image
+    public static let tableRow: SwiftUI.Image
+    public static let tableView: SwiftUI.Image
+    public static let triState: SwiftUI.Image
+  }
+  public enum text {
+    public static let boldText: SwiftUI.Image
+    public static let bulletTextFill: SwiftUI.Image
+    public static let bulletText: SwiftUI.Image
+    public static let cursorArrow: SwiftUI.Image
+    public static let decreaseLineHeight: SwiftUI.Image
+    public static let detailLess: SwiftUI.Image
+    public static let detailMore: SwiftUI.Image
+    public static let fx: SwiftUI.Image
+    public static let heading1: SwiftUI.Image
+    public static let heading2: SwiftUI.Image
+    public static let heading3: SwiftUI.Image
+    public static let hint: SwiftUI.Image
+    public static let increaseLineHeight: SwiftUI.Image
+    public static let indent: SwiftUI.Image
+    public static let italicText: SwiftUI.Image
+    public static let numberedText: SwiftUI.Image
+    public static let outdent: SwiftUI.Image
+    public static let strikethrough: SwiftUI.Image
+    public static let syntax: SwiftUI.Image
+    public static let textAlignCenter: SwiftUI.Image
+    public static let textAlignJustified: SwiftUI.Image
+    public static let textAlignLeft: SwiftUI.Image
+    public static let textAlignRight: SwiftUI.Image
+    public static let textColor: SwiftUI.Image
+    public static let textFormatting: SwiftUI.Image
+    public static let text: SwiftUI.Image
+    public static let translate: SwiftUI.Image
+    public static let underlineText: SwiftUI.Image
+  }
+  public enum things {
+    public static let basketFill: SwiftUI.Image
+    public static let basket: SwiftUI.Image
+    public static let bed: SwiftUI.Image
+    public static let calendarFill: SwiftUI.Image
+    public static let calendar: SwiftUI.Image
+    public static let camera: SwiftUI.Image
+    public static let cart: SwiftUI.Image
+    public static let cloud: SwiftUI.Image
+    public static let compare2: SwiftUI.Image
+    public static let competitorFill: SwiftUI.Image
+    public static let competitor: SwiftUI.Image
+    public static let courseBook: SwiftUI.Image
+    public static let database: SwiftUI.Image
+    public static let dishwasher: SwiftUI.Image
+    public static let display: SwiftUI.Image
+    public static let eCare: SwiftUI.Image
+    public static let educationFill: SwiftUI.Image
+    public static let education: SwiftUI.Image
+    public static let energySavingLightbulb: SwiftUI.Image
+    public static let eraser: SwiftUI.Image
+    public static let explorer: SwiftUI.Image
+    public static let fridge: SwiftUI.Image
+    public static let ipad2: SwiftUI.Image
+    public static let ipad: SwiftUI.Image
+    public static let iphone2: SwiftUI.Image
+    public static let iphone: SwiftUI.Image
+    public static let jam: SwiftUI.Image
+    public static let key: SwiftUI.Image
+    public static let lab: SwiftUI.Image
+    public static let laptop: SwiftUI.Image
+    public static let machine: SwiftUI.Image
+    public static let marketingCampaign: SwiftUI.Image
+    public static let meal: SwiftUI.Image
+    public static let microphone: SwiftUI.Image
+    public static let mileage: SwiftUI.Image
+    public static let nutritionActivity: SwiftUI.Image
+    public static let palette: SwiftUI.Image
+    public static let paperPlane: SwiftUI.Image
+    public static let pharmacy: SwiftUI.Image
+    public static let phone: SwiftUI.Image
+    public static let picture: SwiftUI.Image
+    public static let post: SwiftUI.Image
+    public static let projector: SwiftUI.Image
+    public static let puzzle: SwiftUI.Image
+    public static let sapUi5: SwiftUI.Image
+    public static let simulate: SwiftUI.Image
+    public static let soccer: SwiftUI.Image
+    public static let stethoscope: SwiftUI.Image
+    public static let studyLeaveFill: SwiftUI.Image
+    public static let studyLeave: SwiftUI.Image
+    public static let suitcaseFill: SwiftUI.Image
+    public static let suitcase: SwiftUI.Image
+    public static let sysFind: SwiftUI.Image
+    public static let sysMonitor: SwiftUI.Image
+    public static let tags: SwiftUI.Image
+    public static let temperature: SwiftUI.Image
+    public static let umbrella: SwiftUI.Image
+    public static let video: SwiftUI.Image
+    public static let wallet: SwiftUI.Image
+    public static let washingMachine: SwiftUI.Image
+    public static let webCam: SwiftUI.Image
+    public static let wrench: SwiftUI.Image
+  }
+  public enum time {
+    public static let createEntryTime: SwiftUI.Image
+    public static let customerHistory: SwiftUI.Image
+    public static let fobWatchFill: SwiftUI.Image
+    public static let fobWatch: SwiftUI.Image
+    public static let future: SwiftUI.Image
+    public static let history: SwiftUI.Image
+    public static let instance: SwiftUI.Image
+    public static let lateness: SwiftUI.Image
+    public static let lineChartTimeAxis: SwiftUI.Image
+    public static let past: SwiftUI.Image
+    public static let pending: SwiftUI.Image
+    public static let present: SwiftUI.Image
+    public static let timeAccount: SwiftUI.Image
+    public static let timeEntryRequest: SwiftUI.Image
+    public static let timeOvertime: SwiftUI.Image
+    public static let timesheet: SwiftUI.Image
+  }
+  public enum transport {
+    public static let busPublicTransport: SwiftUI.Image
+    public static let carRentalFill: SwiftUI.Image
+    public static let carRental: SwiftUI.Image
+    public static let cargoTrain: SwiftUI.Image
+    public static let collision: SwiftUI.Image
+    public static let flight: SwiftUI.Image
+    public static let inventory: SwiftUI.Image
+    public static let passengerTrain: SwiftUI.Image
+    public static let shippingStatus: SwiftUI.Image
+    public static let subwayTrain: SwiftUI.Image
+    public static let taxi: SwiftUI.Image
+    public static let travelExpenseReportFill: SwiftUI.Image
+    public static let travelExpenseReport: SwiftUI.Image
+    public static let travelExpense: SwiftUI.Image
+    public static let travelItinerary: SwiftUI.Image
+    public static let travelRequest: SwiftUI.Image
+    public static let tripReport: SwiftUI.Image
+    public static let vehicleRepair: SwiftUI.Image
+  }
+  public enum travel {
+    public static let bed: SwiftUI.Image
+    public static let busPublicTransport: SwiftUI.Image
+    public static let carRentalFill: SwiftUI.Image
+    public static let carRental: SwiftUI.Image
+    public static let cargoTrain: SwiftUI.Image
+    public static let doctor: SwiftUI.Image
+    public static let flight: SwiftUI.Image
+    public static let homeFill: SwiftUI.Image
+    public static let home: SwiftUI.Image
+    public static let meal: SwiftUI.Image
+    public static let passengerTrain: SwiftUI.Image
+    public static let physicalActivity: SwiftUI.Image
+    public static let shippingStatus: SwiftUI.Image
+    public static let subwayTrain: SwiftUI.Image
+    public static let suitcaseFill: SwiftUI.Image
+    public static let suitcase: SwiftUI.Image
+    public static let taxi: SwiftUI.Image
+    public static let travelExpense: SwiftUI.Image
+    public static let travelItinerary: SwiftUI.Image
+    public static let world: SwiftUI.Image
+  }
+  public enum illustrations {
+    public static let addColumnDialog: SwiftUI.Image
+    public static let addColumnDot: SwiftUI.Image
+    public static let addColumnScene: SwiftUI.Image
+    public static let addColumnSpot: SwiftUI.Image
+    public static let addDimensionsDialog: SwiftUI.Image
+    public static let addDimensionsDot: SwiftUI.Image
+    public static let addDimensionsScene: SwiftUI.Image
+    public static let addDimensionsSpot: SwiftUI.Image
+    public static let addPeopleDialog: SwiftUI.Image
+    public static let addPeopleDot: SwiftUI.Image
+    public static let addPeopleScene: SwiftUI.Image
+    public static let addPeopleSpot: SwiftUI.Image
+    public static let balloonSkyDialog: SwiftUI.Image
+    public static let balloonSkyDot: SwiftUI.Image
+    public static let balloonSkyScene: SwiftUI.Image
+    public static let balloonSkySpot: SwiftUI.Image
+    public static let beforeSearchDialog: SwiftUI.Image
+    public static let beforeSearchDot: SwiftUI.Image
+    public static let beforeSearchScene: SwiftUI.Image
+    public static let beforeSearchSpot: SwiftUI.Image
+    public static let connectionDialog: SwiftUI.Image
+    public static let connectionDot: SwiftUI.Image
+    public static let connectionScene: SwiftUI.Image
+    public static let connectionSpot: SwiftUI.Image
+    public static let emptyCalendarDialog: SwiftUI.Image
+    public static let emptyCalendarDot: SwiftUI.Image
+    public static let emptyCalendarScene: SwiftUI.Image
+    public static let emptyCalendarSpot: SwiftUI.Image
+    public static let emptyListDialog: SwiftUI.Image
+    public static let emptyListDot: SwiftUI.Image
+    public static let emptyListScene: SwiftUI.Image
+    public static let emptyListSpot: SwiftUI.Image
+    public static let emptyPlanningCalendarDialog: SwiftUI.Image
+    public static let emptyPlanningCalendarDot: SwiftUI.Image
+    public static let emptyPlanningCalendarScene: SwiftUI.Image
+    public static let emptyPlanningCalendarSpot: SwiftUI.Image
+    public static let errorScreenDialog: SwiftUI.Image
+    public static let errorScreenDot: SwiftUI.Image
+    public static let errorScreenScene: SwiftUI.Image
+    public static let errorScreenSpot: SwiftUI.Image
+    public static let filterTableDialog: SwiftUI.Image
+    public static let filterTableDot: SwiftUI.Image
+    public static let filterTableScene: SwiftUI.Image
+    public static let filterTableSpot: SwiftUI.Image
+    public static let groupTableDialog: SwiftUI.Image
+    public static let groupTableDot: SwiftUI.Image
+    public static let groupTableScene: SwiftUI.Image
+    public static let groupTableSpot: SwiftUI.Image
+    public static let newMailDialog: SwiftUI.Image
+    public static let newMailDot: SwiftUI.Image
+    public static let newMailScene: SwiftUI.Image
+    public static let newMailSpot: SwiftUI.Image
+    public static let noActivitiesDialog: SwiftUI.Image
+    public static let noActivitiesDot: SwiftUI.Image
+    public static let noActivitiesScene: SwiftUI.Image
+    public static let noActivitiesSpot: SwiftUI.Image
+    public static let noColumnsSetDialog: SwiftUI.Image
+    public static let noColumnsSetDot: SwiftUI.Image
+    public static let noColumnsSetScene: SwiftUI.Image
+    public static let noColumnsSetSpot: SwiftUI.Image
+    public static let noDataDialog: SwiftUI.Image
+    public static let noDataDot: SwiftUI.Image
+    public static let noDataScene: SwiftUI.Image
+    public static let noDataSpot: SwiftUI.Image
+    public static let noDimensionsSetDialog: SwiftUI.Image
+    public static let noDimensionsSetDot: SwiftUI.Image
+    public static let noDimensionsSetScene: SwiftUI.Image
+    public static let noDimensionsSetSpot: SwiftUI.Image
+    public static let noEntriesDialog: SwiftUI.Image
+    public static let noEntriesDot: SwiftUI.Image
+    public static let noEntriesScene: SwiftUI.Image
+    public static let noEntriesSpot: SwiftUI.Image
+    public static let noFilterResultsDialog: SwiftUI.Image
+    public static let noFilterResultsDot: SwiftUI.Image
+    public static let noFilterResultsScene: SwiftUI.Image
+    public static let noFilterResultsSpot: SwiftUI.Image
+    public static let noMailDialog: SwiftUI.Image
+    public static let noMailDot: SwiftUI.Image
+    public static let noMailScene: SwiftUI.Image
+    public static let noMailSpot: SwiftUI.Image
+    public static let noMailV1Dialog: SwiftUI.Image
+    public static let noMailV1Dot: SwiftUI.Image
+    public static let noMailV1Scene: SwiftUI.Image
+    public static let noMailV1Spot: SwiftUI.Image
+    public static let noNotificationsDialog: SwiftUI.Image
+    public static let noNotificationsDot: SwiftUI.Image
+    public static let noNotificationsScene: SwiftUI.Image
+    public static let noNotificationsSpot: SwiftUI.Image
+    public static let noSavedItemsDialog: SwiftUI.Image
+    public static let noSavedItemsDot: SwiftUI.Image
+    public static let noSavedItemsScene: SwiftUI.Image
+    public static let noSavedItemsSpot: SwiftUI.Image
+    public static let noSavedItemsV1Dialog: SwiftUI.Image
+    public static let noSavedItemsV1Dot: SwiftUI.Image
+    public static let noSavedItemsV1Scene: SwiftUI.Image
+    public static let noSavedItemsV1Spot: SwiftUI.Image
+    public static let noSearchResultsDialog: SwiftUI.Image
+    public static let noSearchResultsDot: SwiftUI.Image
+    public static let noSearchResultsScene: SwiftUI.Image
+    public static let noSearchResultsSpot: SwiftUI.Image
+    public static let noTasksDialog: SwiftUI.Image
+    public static let noTasksDot: SwiftUI.Image
+    public static let noTasksScene: SwiftUI.Image
+    public static let noTasksSpot: SwiftUI.Image
+    public static let noTasksV1Dialog: SwiftUI.Image
+    public static let noTasksV1Dot: SwiftUI.Image
+    public static let noTasksV1Scene: SwiftUI.Image
+    public static let noTasksV1Spot: SwiftUI.Image
+    public static let pageNotFoundDialog: SwiftUI.Image
+    public static let pageNotFoundDot: SwiftUI.Image
+    public static let pageNotFoundScene: SwiftUI.Image
+    public static let pageNotFoundSpot: SwiftUI.Image
+    public static let reloadScreenDialog: SwiftUI.Image
+    public static let reloadScreenDot: SwiftUI.Image
+    public static let reloadScreenScene: SwiftUI.Image
+    public static let reloadScreenSpot: SwiftUI.Image
+    public static let resizeColumnDialog: SwiftUI.Image
+    public static let resizeColumnDot: SwiftUI.Image
+    public static let resizeColumnScene: SwiftUI.Image
+    public static let resizeColumnSpot: SwiftUI.Image
+    public static let searchEarthDialog: SwiftUI.Image
+    public static let searchEarthDot: SwiftUI.Image
+    public static let searchEarthScene: SwiftUI.Image
+    public static let searchEarthSpot: SwiftUI.Image
+    public static let searchFolderDialog: SwiftUI.Image
+    public static let searchFolderDot: SwiftUI.Image
+    public static let searchFolderScene: SwiftUI.Image
+    public static let searchFolderSpot: SwiftUI.Image
+    public static let signOutDialog: SwiftUI.Image
+    public static let signOutDot: SwiftUI.Image
+    public static let signOutScene: SwiftUI.Image
+    public static let signOutSpot: SwiftUI.Image
+    public static let simpleBalloonDialog: SwiftUI.Image
+    public static let simpleBalloonDot: SwiftUI.Image
+    public static let simpleBalloonScene: SwiftUI.Image
+    public static let simpleBalloonSpot: SwiftUI.Image
+    public static let simpleBellDialog: SwiftUI.Image
+    public static let simpleBellDot: SwiftUI.Image
+    public static let simpleBellScene: SwiftUI.Image
+    public static let simpleBellSpot: SwiftUI.Image
+    public static let simpleCalendarDialog: SwiftUI.Image
+    public static let simpleCalendarDot: SwiftUI.Image
+    public static let simpleCalendarScene: SwiftUI.Image
+    public static let simpleCalendarSpot: SwiftUI.Image
+    public static let simpleCheckMarkDialog: SwiftUI.Image
+    public static let simpleCheckMarkDot: SwiftUI.Image
+    public static let simpleCheckMarkScene: SwiftUI.Image
+    public static let simpleCheckMarkSpot: SwiftUI.Image
+    public static let simpleConnectionDialog: SwiftUI.Image
+    public static let simpleConnectionDot: SwiftUI.Image
+    public static let simpleConnectionScene: SwiftUI.Image
+    public static let simpleConnectionSpot: SwiftUI.Image
+    public static let simpleEmptyDocDialog: SwiftUI.Image
+    public static let simpleEmptyDocDot: SwiftUI.Image
+    public static let simpleEmptyDocScene: SwiftUI.Image
+    public static let simpleEmptyDocSpot: SwiftUI.Image
+    public static let simpleEmptyListDialog: SwiftUI.Image
+    public static let simpleEmptyListDot: SwiftUI.Image
+    public static let simpleEmptyListScene: SwiftUI.Image
+    public static let simpleEmptyListSpot: SwiftUI.Image
+    public static let simpleErrorDialog: SwiftUI.Image
+    public static let simpleErrorDot: SwiftUI.Image
+    public static let simpleErrorScene: SwiftUI.Image
+    public static let simpleErrorSpot: SwiftUI.Image
+    public static let simpleMagnifierDialog: SwiftUI.Image
+    public static let simpleMagnifierDot: SwiftUI.Image
+    public static let simpleMagnifierScene: SwiftUI.Image
+    public static let simpleMagnifierSpot: SwiftUI.Image
+    public static let simpleMailDialog: SwiftUI.Image
+    public static let simpleMailDot: SwiftUI.Image
+    public static let simpleMailScene: SwiftUI.Image
+    public static let simpleMailSpot: SwiftUI.Image
+    public static let simpleNoSavedItemsDialog: SwiftUI.Image
+    public static let simpleNoSavedItemsDot: SwiftUI.Image
+    public static let simpleNoSavedItemsScene: SwiftUI.Image
+    public static let simpleNoSavedItemsSpot: SwiftUI.Image
+    public static let simpleNotFoundMagnifierDialog: SwiftUI.Image
+    public static let simpleNotFoundMagnifierDot: SwiftUI.Image
+    public static let simpleNotFoundMagnifierScene: SwiftUI.Image
+    public static let simpleNotFoundMagnifierSpot: SwiftUI.Image
+    public static let simpleReloadDialog: SwiftUI.Image
+    public static let simpleReloadDot: SwiftUI.Image
+    public static let simpleReloadScene: SwiftUI.Image
+    public static let simpleReloadSpot: SwiftUI.Image
+    public static let simpleTaskDialog: SwiftUI.Image
+    public static let simpleTaskDot: SwiftUI.Image
+    public static let simpleTaskScene: SwiftUI.Image
+    public static let simpleTaskSpot: SwiftUI.Image
+    public static let sleepingBellDialog: SwiftUI.Image
+    public static let sleepingBellDot: SwiftUI.Image
+    public static let sleepingBellScene: SwiftUI.Image
+    public static let sleepingBellSpot: SwiftUI.Image
+    public static let sortColumnDialog: SwiftUI.Image
+    public static let sortColumnDot: SwiftUI.Image
+    public static let sortColumnScene: SwiftUI.Image
+    public static let sortColumnSpot: SwiftUI.Image
+    public static let successBalloonScene: SwiftUI.Image
+    public static let successBalloonDialog: SwiftUI.Image
+    public static let successBalloonDot: SwiftUI.Image
+    public static let successBalloonSpot: SwiftUI.Image
+    public static let successCheckMarkDialog: SwiftUI.Image
+    public static let successCheckMarkDot: SwiftUI.Image
+    public static let successCheckMarkScene: SwiftUI.Image
+    public static let successCheckMarkSpot: SwiftUI.Image
+    public static let successHighFiveDialog: SwiftUI.Image
+    public static let successHighFiveDot: SwiftUI.Image
+    public static let successHighFiveScene: SwiftUI.Image
+    public static let successHighFiveSpot: SwiftUI.Image
+    public static let successScreenDialog: SwiftUI.Image
+    public static let successScreenDot: SwiftUI.Image
+    public static let successScreenScene: SwiftUI.Image
+    public static let successScreenSpot: SwiftUI.Image
+    public static let surveyDialog: SwiftUI.Image
+    public static let surveyDot: SwiftUI.Image
+    public static let surveyScene: SwiftUI.Image
+    public static let surveySpot: SwiftUI.Image
+    public static let tentDialog: SwiftUI.Image
+    public static let tentDot: SwiftUI.Image
+    public static let tentScene: SwiftUI.Image
+    public static let tentSpot: SwiftUI.Image
+    public static let tntAvatarDialog: SwiftUI.Image
+    public static let tntAvatarDot: SwiftUI.Image
+    public static let tntAvatarScene: SwiftUI.Image
+    public static let tntAvatarSpot: SwiftUI.Image
+    public static let tntCalculatorDialog: SwiftUI.Image
+    public static let tntCalculatorDot: SwiftUI.Image
+    public static let tntCalculatorScene: SwiftUI.Image
+    public static let tntCalculatorSpot: SwiftUI.Image
+    public static let tntChartDoughnutDialog: SwiftUI.Image
+    public static let tntChartDoughnutDot: SwiftUI.Image
+    public static let tntChartDoughnutScene: SwiftUI.Image
+    public static let tntChartDoughnutSpot: SwiftUI.Image
+    public static let tntChartAreaDialog: SwiftUI.Image
+    public static let tntChartAreaDot: SwiftUI.Image
+    public static let tntChartAreaScene: SwiftUI.Image
+    public static let tntChartAreaSpot: SwiftUI.Image
+    public static let tntChartArea2Dialog: SwiftUI.Image
+    public static let tntChartArea2Dot: SwiftUI.Image
+    public static let tntChartArea2Scene: SwiftUI.Image
+    public static let tntChartArea2Spot: SwiftUI.Image
+    public static let tntChartBarDialog: SwiftUI.Image
+    public static let tntChartBarDot: SwiftUI.Image
+    public static let tntChartBarScene: SwiftUI.Image
+    public static let tntChartBarSpot: SwiftUI.Image
+    public static let tntChartBpmnFlowDialog: SwiftUI.Image
+    public static let tntChartBpmnFlowDot: SwiftUI.Image
+    public static let tntChartBpmnFlowScene: SwiftUI.Image
+    public static let tntChartBpmnFlowSpot: SwiftUI.Image
+    public static let tntChartBulletDialog: SwiftUI.Image
+    public static let tntChartBulletDot: SwiftUI.Image
+    public static let tntChartBulletScene: SwiftUI.Image
+    public static let tntChartBulletSpot: SwiftUI.Image
+    public static let tntChartFlowDialog: SwiftUI.Image
+    public static let tntChartFlowDot: SwiftUI.Image
+    public static let tntChartFlowScene: SwiftUI.Image
+    public static let tntChartFlowSpot: SwiftUI.Image
+    public static let tntChartGanttDialog: SwiftUI.Image
+    public static let tntChartGanttDot: SwiftUI.Image
+    public static let tntChartGanttScene: SwiftUI.Image
+    public static let tntChartGanttSpot: SwiftUI.Image
+    public static let tntChartOrgDialog: SwiftUI.Image
+    public static let tntChartOrgDot: SwiftUI.Image
+    public static let tntChartOrgScene: SwiftUI.Image
+    public static let tntChartOrgSpot: SwiftUI.Image
+    public static let tntChartPieDialog: SwiftUI.Image
+    public static let tntChartPieDot: SwiftUI.Image
+    public static let tntChartPieScene: SwiftUI.Image
+    public static let tntChartPieSpot: SwiftUI.Image
+    public static let tntCodePlaceholderDialog: SwiftUI.Image
+    public static let tntCodePlaceholderDot: SwiftUI.Image
+    public static let tntCodePlaceholderScene: SwiftUI.Image
+    public static let tntCodePlaceholderSpot: SwiftUI.Image
+    public static let tntCompanyDialog: SwiftUI.Image
+    public static let tntCompanyDot: SwiftUI.Image
+    public static let tntCompanyScene: SwiftUI.Image
+    public static let tntCompanySpot: SwiftUI.Image
+    public static let tntCompassDialog: SwiftUI.Image
+    public static let tntCompassDot: SwiftUI.Image
+    public static let tntCompassScene: SwiftUI.Image
+    public static let tntCompassSpot: SwiftUI.Image
+    public static let tntComponentsDialog: SwiftUI.Image
+    public static let tntComponentsDot: SwiftUI.Image
+    public static let tntComponentsScene: SwiftUI.Image
+    public static let tntComponentsSpot: SwiftUI.Image
+    public static let tntDialogDialog: SwiftUI.Image
+    public static let tntDialogDot: SwiftUI.Image
+    public static let tntDialogScene: SwiftUI.Image
+    public static let tntDialogSpot: SwiftUI.Image
+    public static let tntExternalLinkDialog: SwiftUI.Image
+    public static let tntExternalLinkDot: SwiftUI.Image
+    public static let tntExternalLinkScene: SwiftUI.Image
+    public static let tntExternalLinkSpot: SwiftUI.Image
+    public static let tntFaceIdDialog: SwiftUI.Image
+    public static let tntFaceIdDot: SwiftUI.Image
+    public static let tntFaceIdScene: SwiftUI.Image
+    public static let tntFaceIdSpot: SwiftUI.Image
+    public static let tntFingerprintDialog: SwiftUI.Image
+    public static let tntFingerprintDot: SwiftUI.Image
+    public static let tntFingerprintScene: SwiftUI.Image
+    public static let tntFingerprintSpot: SwiftUI.Image
+    public static let tntHandshakeDialog: SwiftUI.Image
+    public static let tntHandshakeDot: SwiftUI.Image
+    public static let tntHandshakeScene: SwiftUI.Image
+    public static let tntHandshakeSpot: SwiftUI.Image
+    public static let tntHelpDialog: SwiftUI.Image
+    public static let tntHelpDot: SwiftUI.Image
+    public static let tntHelpScene: SwiftUI.Image
+    public static let tntHelpSpot: SwiftUI.Image
+    public static let tntLockDialog: SwiftUI.Image
+    public static let tntLockDot: SwiftUI.Image
+    public static let tntLockScene: SwiftUI.Image
+    public static let tntLockSpot: SwiftUI.Image
+    public static let tntMissionDialog: SwiftUI.Image
+    public static let tntMissionDot: SwiftUI.Image
+    public static let tntMissionFailedDialog: SwiftUI.Image
+    public static let tntMissionFailedDot: SwiftUI.Image
+    public static let tntMissionFailedScene: SwiftUI.Image
+    public static let tntMissionFailedSpot: SwiftUI.Image
+    public static let tntMissionScene: SwiftUI.Image
+    public static let tntMissionSpot: SwiftUI.Image
+    public static let tntNoApplicationsDialog: SwiftUI.Image
+    public static let tntNoApplicationsDot: SwiftUI.Image
+    public static let tntNoApplicationsScene: SwiftUI.Image
+    public static let tntNoApplicationsSpot: SwiftUI.Image
+    public static let tntNoFlowsDialog: SwiftUI.Image
+    public static let tntNoFlowsDot: SwiftUI.Image
+    public static let tntNoFlowsScene: SwiftUI.Image
+    public static let tntNoFlowsSpot: SwiftUI.Image
+    public static let tntNoUsersDialog: SwiftUI.Image
+    public static let tntNoUsersDot: SwiftUI.Image
+    public static let tntNoUsersScene: SwiftUI.Image
+    public static let tntNoUsersSpot: SwiftUI.Image
+    public static let tntRadarDialog: SwiftUI.Image
+    public static let tntRadarDot: SwiftUI.Image
+    public static let tntRadarScene: SwiftUI.Image
+    public static let tntRadarSpot: SwiftUI.Image
+    public static let tntRoadMapDialog: SwiftUI.Image
+    public static let tntRoadMapDot: SwiftUI.Image
+    public static let tntRoadMapScene: SwiftUI.Image
+    public static let tntRoadMapSpot: SwiftUI.Image
+    public static let tntSecretsDialog: SwiftUI.Image
+    public static let tntSecretsDot: SwiftUI.Image
+    public static let tntSecretsScene: SwiftUI.Image
+    public static let tntSecretsSpot: SwiftUI.Image
+    public static let tntServicesDialog: SwiftUI.Image
+    public static let tntServicesDot: SwiftUI.Image
+    public static let tntServicesScene: SwiftUI.Image
+    public static let tntServicesSpot: SwiftUI.Image
+    public static let tntSessionExpiredDialog: SwiftUI.Image
+    public static let tntSessionExpiredDot: SwiftUI.Image
+    public static let tntSessionExpiredScene: SwiftUI.Image
+    public static let tntSessionExpiredSpot: SwiftUI.Image
+    public static let tntSessionExpiringDialog: SwiftUI.Image
+    public static let tntSessionExpiringDot: SwiftUI.Image
+    public static let tntSessionExpiringScene: SwiftUI.Image
+    public static let tntSessionExpiringSpot: SwiftUI.Image
+    public static let tntSettingsDialog: SwiftUI.Image
+    public static let tntSettingsDot: SwiftUI.Image
+    public static let tntSettingsScene: SwiftUI.Image
+    public static let tntSettingsSpot: SwiftUI.Image
+    public static let tntSuccessDialog: SwiftUI.Image
+    public static let tntSuccessDot: SwiftUI.Image
+    public static let tntSuccessScene: SwiftUI.Image
+    public static let tntSuccessSpot: SwiftUI.Image
+    public static let tntSuccessfulAuthDialog: SwiftUI.Image
+    public static let tntSuccessfulAuthDot: SwiftUI.Image
+    public static let tntSuccessfulAuthScene: SwiftUI.Image
+    public static let tntSuccessfulAuthSpot: SwiftUI.Image
+    public static let tntSystemsDialog: SwiftUI.Image
+    public static let tntSystemsDot: SwiftUI.Image
+    public static let tntSystemsScene: SwiftUI.Image
+    public static let tntSystemsSpot: SwiftUI.Image
+    public static let tntTeamsDialog: SwiftUI.Image
+    public static let tntTeamsDot: SwiftUI.Image
+    public static let tntTeamsScene: SwiftUI.Image
+    public static let tntTeamsSpot: SwiftUI.Image
+    public static let tntToolsDialog: SwiftUI.Image
+    public static let tntToolsDot: SwiftUI.Image
+    public static let tntToolsScene: SwiftUI.Image
+    public static let tntToolsSpot: SwiftUI.Image
+    public static let tntTutorialsDialog: SwiftUI.Image
+    public static let tntTutorialsDot: SwiftUI.Image
+    public static let tntTutorialsScene: SwiftUI.Image
+    public static let tntTutorialsSpot: SwiftUI.Image
+    public static let tntUnableToLoadDialog: SwiftUI.Image
+    public static let tntUnableToLoadDot: SwiftUI.Image
+    public static let tntUnableToLoadScene: SwiftUI.Image
+    public static let tntUnableToLoadSpot: SwiftUI.Image
+    public static let tntUnlockDialog: SwiftUI.Image
+    public static let tntUnlockDot: SwiftUI.Image
+    public static let tntUnlockScene: SwiftUI.Image
+    public static let tntUnlockSpot: SwiftUI.Image
+    public static let tntUnsuccessfulAuthDialog: SwiftUI.Image
+    public static let tntUnsuccessfulAuthDot: SwiftUI.Image
+    public static let tntUnsuccessfulAuthScene: SwiftUI.Image
+    public static let tntUnsuccessfulAuthSpot: SwiftUI.Image
+    public static let tntUser2Dialog: SwiftUI.Image
+    public static let tntUser2Dot: SwiftUI.Image
+    public static let tntUser2Scene: SwiftUI.Image
+    public static let tntUser2Spot: SwiftUI.Image
+    public static let unableToLoadDialog: SwiftUI.Image
+    public static let unableToLoadDot: SwiftUI.Image
+    public static let unableToLoadImageDialog: SwiftUI.Image
+    public static let unableToLoadImageDot: SwiftUI.Image
+    public static let unableToLoadImageScene: SwiftUI.Image
+    public static let unableToLoadImageSpot: SwiftUI.Image
+    public static let unableToLoadScene: SwiftUI.Image
+    public static let unableToLoadSpot: SwiftUI.Image
+    public static let unableToUploadDialog: SwiftUI.Image
+    public static let unableToUploadDot: SwiftUI.Image
+    public static let unableToUploadScene: SwiftUI.Image
+    public static let unableToUploadSpot: SwiftUI.Image
+    public static let uploadCollectionDialog: SwiftUI.Image
+    public static let uploadCollectionDot: SwiftUI.Image
+    public static let uploadCollectionScene: SwiftUI.Image
+    public static let uploadCollectionSpot: SwiftUI.Image
+    public static let uploadToCloudDialog: SwiftUI.Image
+    public static let uploadToCloudDot: SwiftUI.Image
+    public static let uploadToCloudScene: SwiftUI.Image
+    public static let uploadToCloudSpot: SwiftUI.Image
+  }
+}
+extension SwiftUI.Image {
+  public init(fioriName: Swift.String)
+  public var cgImage: CoreGraphics.CGImage? {
+    get
+  }
+}
+extension SwiftUI.Font {
+  public struct FioriWeight : Swift.Hashable {
+    public static let ultraLight: SwiftUI.Font.FioriWeight
+    public static let thin: SwiftUI.Font.FioriWeight
+    public static let light: SwiftUI.Font.FioriWeight
+    public static let regular: SwiftUI.Font.FioriWeight
+    public static let medium: SwiftUI.Font.FioriWeight
+    public static let semibold: SwiftUI.Font.FioriWeight
+    public static let semiboldDuplex: SwiftUI.Font.FioriWeight
+    public static let bold: SwiftUI.Font.FioriWeight
+    public static let heavy: SwiftUI.Font.FioriWeight
+    public static let black: SwiftUI.Font.FioriWeight
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: SwiftUI.Font.FioriWeight, b: SwiftUI.Font.FioriWeight) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension SwiftUI.Font.FioriWeight : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension SwiftUI.Font {
+  public static func fiori(forTextStyle fioriTextStyle: SwiftUI.Font.FioriTextStyle, weight: SwiftUI.Font.FioriWeight = .regular, isItalic: Swift.Bool = false, isCondensed: Swift.Bool = false) -> SwiftUI.Font
+  public static func fiori(fixedSize: CoreFoundation.CGFloat, weight: SwiftUI.Font.FioriWeight = .regular, isItalic: Swift.Bool = false, isCondensed: Swift.Bool = false) -> SwiftUI.Font
+  @available(*, deprecated, message: "Use UIFont.fiori(forTextStyle:) with isCondensed parameter set to true")
+  public static func fioriCondensed(forTextStyle fioriTextStyle: SwiftUI.Font.FioriTextStyle, weight: SwiftUI.Font.FioriWeight = .regular) -> SwiftUI.Font
+  @available(iOS 14.0, *)
+  @available(*, deprecated, message: "Use UIFont.fiori(fixedSize:) with isCondensed parameter set to true")
+  public static func fioriCondensed(fixedSize: CoreFoundation.CGFloat, weight: SwiftUI.Font.FioriWeight = .regular) -> SwiftUI.Font
+}
+extension SwiftUI.Font {
+  public enum FioriTextStyle : Swift.CaseIterable {
+    case largeTitle
+    case title1, title2, title3
+    case headline, subheadline
+    case body
+    case callout
+    case footnote
+    case caption1, caption2
+    case KPI, largeKPI
+    public static func == (a: SwiftUI.Font.FioriTextStyle, b: SwiftUI.Font.FioriTextStyle) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [SwiftUI.Font.FioriTextStyle]
+    public static var allCases: [SwiftUI.Font.FioriTextStyle] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension SwiftUI.Font.FioriTextStyle : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension SwiftUI.Font {
+  public static func registerFioriFonts()
+}
+public struct HexColor : Swift.Hashable {
+  public init(lightColor: Swift.String? = nil, darkColor: Swift.String? = nil, elevatedLightColor: Swift.String? = nil, elevatedDarkColor: Swift.String? = nil, contrastLightColor: Swift.String? = nil, contrastDarkColor: Swift.String? = nil, elevatedContrastLightColor: Swift.String? = nil, elevatedContrastDarkColor: Swift.String? = nil)
+  public func rgba(_ hexString: Swift.String) -> (r: Swift.Double, g: Swift.Double, b: Swift.Double, a: Swift.Double)
+  public func hex(_ variant: FioriThemeManager.ColorVariant) -> Swift.String
+  public func getVariant(traits collection: UIKit.UITraitCollection, background scheme: FioriThemeManager.BackgroundColorScheme? = .device, interface level: FioriThemeManager.InterfaceLevel? = .device, display mode: FioriThemeManager.ColorDisplayMode? = .device) -> FioriThemeManager.ColorVariant
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension FioriThemeManager.HexColor : Swift.Equatable {
+  public static func == (lhs: FioriThemeManager.HexColor, rhs: FioriThemeManager.HexColor) -> Swift.Bool
+}
+extension FioriThemeManager.HexColor : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public enum InterfaceLevel : Swift.String, Swift.CaseIterable {
+  case device
+  case deviceInverse
+  case baseConstant
+  case elevatedConstant
+  public func inverse() -> FioriThemeManager.InterfaceLevel
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [FioriThemeManager.InterfaceLevel]
+  public typealias RawValue = Swift.String
+  public static var allCases: [FioriThemeManager.InterfaceLevel] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension FioriThemeManager.InterfaceLevel : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+public struct Palette : FioriThemeManager.PaletteProvider {
+  public func hexColor(for style: FioriThemeManager.ColorStyle) -> FioriThemeManager.HexColor?
+  public var uuid: Foundation.UUID {
+    get
+  }
+  public var colorDefinitions: [FioriThemeManager.ColorStyle : FioriThemeManager.HexColor] {
+    get
+  }
+  public init(_ palette: any FioriThemeManager.PaletteProvider)
+}
+extension FioriThemeManager.Palette : Swift.Equatable {
+  public static func == (lhs: FioriThemeManager.Palette, rhs: FioriThemeManager.Palette) -> Swift.Bool
+}
+public protocol PaletteProvider {
+  var uuid: Foundation.UUID { get }
+  var colorDefinitions: [FioriThemeManager.ColorStyle : FioriThemeManager.HexColor] { get }
+  func hexColor(for style: FioriThemeManager.ColorStyle) -> FioriThemeManager.HexColor?
+}
+public enum PaletteVersion : Swift.Int {
+  @available(watchOS, unavailable)
+  case v3_x
+  @available(watchOS, unavailable)
+  case v3_2
+  @available(watchOS, unavailable)
+  case v4
+  @available(watchOS, unavailable)
+  case v5
+  @available(watchOS, unavailable)
+  case v6
+  @available(watchOS, unavailable)
+  case v7
+  @available(watchOS, unavailable)
+  case v8
+  @available(watchOS 7.0, *)
+  @available(iOS, unavailable)
+  case v1
+  public static let latest: FioriThemeManager.PaletteVersion
+  public func previous() -> FioriThemeManager.PaletteVersion?
+  public func next() -> FioriThemeManager.PaletteVersion?
+  public func supportedStyles() -> Swift.Set<FioriThemeManager.ColorStyle>
+  public func obsoletedStyles() -> Swift.Set<FioriThemeManager.ColorStyle>
+  public func newStyles() -> Swift.Set<FioriThemeManager.ColorStyle>
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension FioriThemeManager.PaletteVersion {
+  public init?(palette: FioriThemeManager.Palette)
+  public var palette: FioriThemeManager.Palette {
+    get
+  }
+}
+extension FioriThemeManager.PaletteVersion : Swift.CaseIterable {
+  public static var allCases: [FioriThemeManager.PaletteVersion] {
+    get
+  }
+  public typealias AllCases = [FioriThemeManager.PaletteVersion]
+}
+public enum StyleSheetParsingError : Swift.Error {
+  case invalidStyleSheet(Swift.String)
+}
+public struct StyleSheetSettings {
+  public static func reset()
+  public static func loadStylesheetByURL(url: Foundation.URL) throws
+  public static func loadStylesheetByString(content: Swift.String) throws
+}
+@_hasMissingDesignatedInitializers public class ThemeManager {
+  public static let shared: FioriThemeManager.ThemeManager
+  public func setPaletteVersion(_ version: FioriThemeManager.PaletteVersion)
+  public func setPalette(_ palette: FioriThemeManager.Palette)
+  public var palette: FioriThemeManager.Palette {
+    get
+  }
+  public func setColor(_ color: SwiftUI.Color, for style: FioriThemeManager.ColorStyle)
+  public func setColor(_ color: SwiftUI.Color, for style: FioriThemeManager.ColorStyle, variant: FioriThemeManager.ColorVariant?)
+  public func setHexColor(_ hex: Swift.String, for style: FioriThemeManager.ColorStyle)
+  public func setHexColor(_ hex: Swift.String, for style: FioriThemeManager.ColorStyle, variant: FioriThemeManager.ColorVariant)
+  public func reset()
+  @objc deinit
+}
+extension FioriThemeManager.BackgroundColorScheme : Swift.Equatable {}
+extension FioriThemeManager.BackgroundColorScheme : Swift.Hashable {}
+extension FioriThemeManager.BackgroundColorScheme : Swift.RawRepresentable {}
+extension FioriThemeManager.ColorDisplayMode : Swift.Equatable {}
+extension FioriThemeManager.ColorDisplayMode : Swift.Hashable {}
+extension FioriThemeManager.ColorDisplayMode : Swift.RawRepresentable {}
+extension FioriThemeManager.ColorStyle : Swift.Equatable {}
+extension FioriThemeManager.ColorStyle : Swift.Hashable {}
+extension FioriThemeManager.ColorStyle : Swift.RawRepresentable {}
+extension FioriThemeManager.ColorVariant : Swift.Equatable {}
+extension FioriThemeManager.ColorVariant : Swift.Hashable {}
+extension SwiftUI.Font.FioriTextStyle : Swift.Equatable {}
+extension SwiftUI.Font.FioriTextStyle : Swift.Hashable {}
+extension FioriThemeManager.InterfaceLevel : Swift.Equatable {}
+extension FioriThemeManager.InterfaceLevel : Swift.Hashable {}
+extension FioriThemeManager.InterfaceLevel : Swift.RawRepresentable {}
+extension FioriThemeManager.PaletteVersion : Swift.Equatable {}
+extension FioriThemeManager.PaletteVersion : Swift.Hashable {}
+extension FioriThemeManager.PaletteVersion : Swift.RawRepresentable {}
